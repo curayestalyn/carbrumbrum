@@ -152,6 +152,7 @@
     <ClCompile Include="..\simpleSdlWrapper\text.c" />
     <ClCompile Include="02simpleGameMain.c" />
     <ClCompile Include="game02\game02.c" />
+    <ClCompile Include="jokoaAurkeztu.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\simpleSdlWrapper\ebentoak.h" />

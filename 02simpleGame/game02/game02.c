@@ -8,11 +8,12 @@
 #include <windows.h>
 #include <stdlib.h>
 
-#define ONGI_ETORRI_MEZUA "PRESS RETURN TO START THE GAME"
+
+
 #define JOKOA_SOUND ".\\sound\\132TRANCE_02.wav"
 #define TXANPONA_IMAGE ".\\img\\elementua\\txanpona.bmp"
 #define ENERGYBULL_IMAGE ".\\img\\elementua\\energybull.bmp"
-#define KOTXEA1_IMAGE ".\\img\\garajea\\policecar30.bmp"
+#define KOTXEA1_IMAGE ".\\img\\garajea\\policecar20.bmp"
 #define BACKGROUND_IMAGE ".\\img\\carretera.bmp"
 #define MARRAK1_IMAGE ".\\img\\marrak.bmp"
 #define MARRAK2_IMAGE ".\\img\\marrak2.bmp"
@@ -22,7 +23,9 @@
 #define BUKAERA_SOUND_1 ".\\sound\\128NIGHT_01.wav"
 #define BUKAERA_IMAGE ".\\img\\gameOver_1.bmp"
 
-void sarreraMezuaIdatzi();
+
+
+
 /*int JOKOA_jokalariaIrudiaSortu();
 int JOKOA_lehenKotxea();
 int JOKOA_background();
@@ -34,25 +37,6 @@ POSIZIOA ERREALITATE_FISIKOA_mugimendua(POSIZIOA posizioa);
 //int  BUKAERA_menua(EGOERA egoera);
 int BUKAERA_irudiaBistaratu();
 
-void jokoaAurkeztu(void)
-{
-  int ebentu = 0;
-
-  sarreraMezuaIdatzi();
-  do
-  {
-    ebentu = ebentuaJasoGertatuBada();
-  } while (ebentu != TECLA_RETURN);
-  pantailaGarbitu();
-  pantailaBerriztu();
-}
-
-void sarreraMezuaIdatzi()
-{
-  pantailaGarbitu();
-  textuaIdatzi(225, 200, ONGI_ETORRI_MEZUA);
-  pantailaBerriztu();
-}
 
 EGOERA jokatu(void) 
 {
@@ -60,8 +44,10 @@ EGOERA jokatu(void)
   int ebentu = 0;
   JOKO_ELEMENTUA oztopoa, jokalaria, background, marrak1, marrak2, txanpona, energybull;
   POSIZIOA aux;
+  //BACKGROUND 
   background.pos.x = 0;
   background.pos.y = 0;
+
   //Uint32 time01 = SDL_GetTicks(), time02;
 
   marrak1.pos.x = 0;
@@ -70,22 +56,20 @@ EGOERA jokatu(void)
   marrak2.pos.x = 0;
   marrak2.pos.y = -480;
 
+  //PISTAKO ELEMENTUAK
   jokalaria.pos.x = 340;
   jokalaria.pos.y = 340;
 
   oztopoa.pos.x = 80;
   oztopoa.pos.y = 0;
 
-  background.pos.x = 0;
-  background.pos.y = 0;
-
   txanpona.pos.x = 235;
   txanpona.pos.y = 0;
 
-  /*Pistako elementuak*/
   energybull.pos.x = 100;
   energybull.pos.y = 0;
-	 
+
+  
 
   audioInit();
   loadTheMusic(JOKOA_SOUND);
@@ -97,6 +81,7 @@ EGOERA jokatu(void)
   jokalaria.id = JOKOAREN_argazkiakGehitu(JOKOA_PLAYER_IMAGE);
   txanpona.id = JOKOAREN_argazkiakGehitu(TXANPONA_IMAGE);
   energybull.id = JOKOAREN_argazkiakGehitu(ENERGYBULL_IMAGE);
+
 
   do {
     Sleep(2);
@@ -110,10 +95,12 @@ EGOERA jokatu(void)
 	irudiaMugitu(marrak2.id, marrak2.pos.x, marrak2.pos.y);
 	aux = ERREALITATE_FISIKOA_mugimendua(txanpona.pos);
 	txanpona.pos.y = aux.y;
-	/*REDBULL*/
 	aux = ERREALITATE_FISIKOA_mugimendua(energybull.pos);
 	energybull.pos.y = aux.y;
 	irudiaMugitu(energybull.id, energybull.pos.x, energybull.pos.y);
+
+	
+	
 	/*Pantaila garbitu*/
     pantailaGarbitu();
     arkatzKoloreaEzarri(0, 0, 0xFF);
@@ -121,6 +108,7 @@ EGOERA jokatu(void)
 	irudiaMugitu(txanpona.id, txanpona.pos.x, txanpona.pos.y);
     irudiaMugitu(jokalaria.id, jokalaria.pos.x, jokalaria.pos.y);
 	irudiaMugitu(energybull.id, energybull.pos.x, energybull.pos.y);
+	
     irudiakMarraztu();
     pantailaBerriztu();
     ebentu = ebentuaJasoGertatuBada();
