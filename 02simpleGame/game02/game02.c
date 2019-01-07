@@ -18,6 +18,11 @@
 #define MARRAK1_IMAGE ".\\img\\marrak.bmp"
 #define MARRAK2_IMAGE ".\\img\\marrak2.bmp"
 #define JOKOA_PLAYER_IMAGE ".\\img\\garajea\\jokalaria.bmp"
+#define BIZITZAK_IMAGE ".\\img\\elementua\\life.bmp"
+#define DEPOSITO1_IMAGE ".\\img\\elementua\\deposito1.bmp"
+#define DEPOSITO2_IMAGE ".\\img\\elementua\\deposito2.bmp"
+#define DEPOSITO3_IMAGE ".\\img\\elementua\\deposito3.bmp"
+#define DEPOSITO4_IMAGE ".\\img\\elementua\\deposito4.bmp"
 #define JOKOA_SOUND_WIN ".\\sound\\BugleCall.wav"
 #define JOKOA_SOUND_LOOSE ".\\sound\\gameovervoice.wav" 
 #define BUKAERA_SOUND_1 ".\\sound\\128NIGHT_01.wav"
@@ -36,13 +41,17 @@ EGOERA JOKOA_egoera(JOKO_ELEMENTUA jokalaria, JOKO_ELEMENTUA oztopoa);
 POSIZIOA ERREALITATE_FISIKOA_mugimendua(POSIZIOA posizioa);
 //int  BUKAERA_menua(EGOERA egoera);
 int BUKAERA_irudiaBistaratu();
+void ArgazkiaAplikatu(char *argazkia);
+void argazkiakAldatu(n);
+
 
 
 EGOERA jokatu(void) 
 {
   EGOERA  egoera = JOLASTEN;
   int ebentu = 0;
-  JOKO_ELEMENTUA oztopoa, jokalaria, background, marrak1, marrak2, txanpona, energybull;
+  int n = 1;
+  JOKO_ELEMENTUA oztopoa, jokalaria, background, marrak1, marrak2, txanpona, energybull, deposito1, deposito2, deposito3, deposito4, bizitzak1, bizitzak2, bizitzak3;
   POSIZIOA aux;
   //BACKGROUND 
   background.pos.x = 0;
@@ -69,7 +78,8 @@ EGOERA jokatu(void)
   energybull.pos.x = 100;
   energybull.pos.y = 0;
 
-  
+  deposito1.pos.x = 530;
+  deposito1.pos.y = 330;
 
   audioInit();
   loadTheMusic(JOKOA_SOUND);
@@ -81,6 +91,13 @@ EGOERA jokatu(void)
   jokalaria.id = JOKOAREN_argazkiakGehitu(JOKOA_PLAYER_IMAGE);
   txanpona.id = JOKOAREN_argazkiakGehitu(TXANPONA_IMAGE);
   energybull.id = JOKOAREN_argazkiakGehitu(ENERGYBULL_IMAGE);
+  deposito1.id = JOKOAREN_argazkiakGehitu(DEPOSITO1_IMAGE);
+  deposito2.id = JOKOAREN_argazkiakGehitu(DEPOSITO2_IMAGE);
+  deposito3.id = JOKOAREN_argazkiakGehitu(DEPOSITO3_IMAGE);
+  deposito4.id = JOKOAREN_argazkiakGehitu(DEPOSITO4_IMAGE);
+  bizitzak1.id = JOKOAREN_argazkiakGehitu(BIZITZAK_IMAGE);
+  bizitzak2.id = JOKOAREN_argazkiakGehitu(BIZITZAK_IMAGE);
+  bizitzak3.id = JOKOAREN_argazkiakGehitu(BIZITZAK_IMAGE);
 
 
   do {
@@ -98,8 +115,15 @@ EGOERA jokatu(void)
 	aux = ERREALITATE_FISIKOA_mugimendua(energybull.pos);
 	energybull.pos.y = aux.y;
 	irudiaMugitu(energybull.id, energybull.pos.x, energybull.pos.y);
+	irudiaMugitu(bizitzak1.id, 540, 17);
+	irudiaMugitu(bizitzak2.id, 574, 17);
+	irudiaMugitu(bizitzak3.id, 607, 17);
+	irudiaMugitu(deposito1.id, deposito1.pos.x, deposito1.pos.y);
+	irudiaMugitu(deposito2.id, deposito1.pos.x, deposito1.pos.y);
+	irudiaMugitu(deposito3.id, deposito1.pos.x, deposito1.pos.y);
+	irudiaMugitu(deposito4.id, deposito1.pos.x, deposito1.pos.y);
 
-	
+
 	
 	/*Pantaila garbitu*/
     pantailaGarbitu();
@@ -131,6 +155,12 @@ EGOERA jokatu(void)
 	{
 		txanpona.pos.y = -24;
 	}
+	if (jokalaria.pos.x > energybull.pos.x - 23 && jokalaria.pos.x <energybull.pos.x + 23 && jokalaria.pos.y + 23 >energybull.pos.y - 23 && jokalaria.pos.y - 16 < energybull.pos.y + 23)
+	{
+		n++;
+		argazkiakAldatu(n);
+		energybull.pos.y = -24;
+	}
 	if (energybull.pos.y > 480)
 	{
 		energybull.pos.y = -24;
@@ -152,13 +182,15 @@ EGOERA jokatu(void)
 
 EGOERA JOKOA_egoera(JOKO_ELEMENTUA jokalaria, JOKO_ELEMENTUA oztopoa) {
   EGOERA  ret = JOLASTEN;
-  if (jokalaria.pos.x >oztopoa.pos.x - 54 && jokalaria.pos.x <oztopoa.pos.x + 54 && jokalaria.pos.y + 32 >oztopoa.pos.y - 54 && jokalaria.pos.y - 32 <oztopoa.pos.y + 54) {
+  int bizitzakGaldu=3;
+  if (jokalaria.pos.x >oztopoa.pos.x - 32 && jokalaria.pos.x <oztopoa.pos.x + 32 && jokalaria.pos.y + 32 >oztopoa.pos.y - 32 && jokalaria.pos.y - 32 <oztopoa.pos.y + 32) {
     ret = GALDU;
   }
   else if (jokalaria.pos.x > 476 || jokalaria.pos.x < 64)  
   {
     ret = GALDU;
   }
+  
   return ret;
 }
 
@@ -200,6 +232,31 @@ int  jokoAmaierakoa(EGOERA egoera)
   audioTerminate();
   irudiaKendu(id);
   return (ebentu != TECLA_RETURN) ? 1 : 0;
+}
+
+void argazkiakAldatu(n)
+{
+	if (n >= 5) { n = 4; }
+	if (n == 4) {
+		ArgazkiaAplikatu(DEPOSITO1_IMAGE);
+	}
+	if (n == 3) {
+		ArgazkiaAplikatu(DEPOSITO2_IMAGE);
+	}
+	if (n == 2) {
+		ArgazkiaAplikatu(DEPOSITO3_IMAGE);
+	}
+	if (n == 1) {
+		ArgazkiaAplikatu(DEPOSITO4_IMAGE);
+	}
+}
+void ArgazkiaAplikatu(char *argazkia)
+{
+	int id = 1;
+	id = irudiaKargatu(argazkia);
+	irudiaMugitu(id, 530, 330);
+	irudiakMarraztu();
+	pantailaBerriztu();
 }
 
 int BUKAERA_irudiaBistaratu() {
