@@ -43,7 +43,8 @@ POSIZIOA ERREALITATE_FISIKOA_mugimendua(POSIZIOA posizioa);
 int BUKAERA_irudiaBistaratu();
 void ArgazkiaAplikatu(char *argazkia);
 void argazkiakAldatu(n);
-
+int aukeratuBidea();
+//void argazkiakMugiarazi(JOKO_ELEMENTUA oztopoa);
 
 
 EGOERA jokatu(void) 
@@ -51,6 +52,7 @@ EGOERA jokatu(void)
   EGOERA  egoera = JOLASTEN;
   int ebentu = 0;
   int n = 1;
+  int bidea=0;
   JOKO_ELEMENTUA oztopoa, jokalaria, background, marrak1, marrak2, txanpona, energybull, deposito1, deposito2, deposito3, deposito4, bizitzak1, bizitzak2, bizitzak3;
   POSIZIOA aux;
   //BACKGROUND 
@@ -102,22 +104,31 @@ EGOERA jokatu(void)
 
   do {
     Sleep(2);
-    aux = ERREALITATE_FISIKOA_mugimendua(oztopoa.pos);
+	//Oztopoa
+	aux = ERREALITATE_FISIKOA_mugimendua(oztopoa.pos);
 	oztopoa.pos.y = aux.y;
+	irudiaMugitu(oztopoa.id, oztopoa.pos.x, oztopoa.pos.y);
+	//Marrak1
 	aux = ERREALITATE_FISIKOA_mugimendua(marrak1.pos);
 	marrak1.pos.y = aux.y;
 	irudiaMugitu(marrak1.id, marrak1.pos.x, marrak1.pos.y);
+	//Marrak2
 	aux = ERREALITATE_FISIKOA_mugimendua(marrak2.pos);
 	marrak2.pos.y = aux.y;
 	irudiaMugitu(marrak2.id, marrak2.pos.x, marrak2.pos.y);
+	//Txanpona
 	aux = ERREALITATE_FISIKOA_mugimendua(txanpona.pos);
 	txanpona.pos.y = aux.y;
+	irudiaMugitu(txanpona.id, txanpona.pos.x, txanpona.pos.y);
+	//RedBull
 	aux = ERREALITATE_FISIKOA_mugimendua(energybull.pos);
 	energybull.pos.y = aux.y;
 	irudiaMugitu(energybull.id, energybull.pos.x, energybull.pos.y);
+	//Bizitzak
 	irudiaMugitu(bizitzak1.id, 540, 17);
 	irudiaMugitu(bizitzak2.id, 574, 17);
 	irudiaMugitu(bizitzak3.id, 607, 17);
+	//Dèpositoak
 	irudiaMugitu(deposito1.id, deposito1.pos.x, deposito1.pos.y);
 	irudiaMugitu(deposito2.id, deposito1.pos.x, deposito1.pos.y);
 	irudiaMugitu(deposito3.id, deposito1.pos.x, deposito1.pos.y);
@@ -153,22 +164,33 @@ EGOERA jokatu(void)
 	}
 	if (txanpona.pos.y > 480)
 	{
+		bidea = aukeratuBidea();
+		txanpona.pos.x = 95 + bidea;
 		txanpona.pos.y = -24;
 	}
 	if (jokalaria.pos.x > energybull.pos.x - 23 && jokalaria.pos.x <energybull.pos.x + 23 && jokalaria.pos.y + 23 >energybull.pos.y - 23 && jokalaria.pos.y - 16 < energybull.pos.y + 23)
 	{
 		n++;
 		argazkiakAldatu(n);
-		energybull.pos.y = -24;
+		energybull.pos.y = -2007;
+		bidea = aukeratuBidea();
+		energybull.pos.x = 95 + bidea;
+
 	}
 	if (energybull.pos.y > 480)
 	{
-		energybull.pos.y = -24;
+		energybull.pos.y = -2007;
+		bidea = aukeratuBidea();
+		energybull.pos.x = 95 + bidea;
+
 	}
     if (oztopoa.pos.y + 30 > 550) {
 		int numero;
 		numero = rand() % 1000;
 		oztopoa.pos.y = -100-numero;
+		bidea = aukeratuBidea();
+		oztopoa.pos.x = 85 + bidea;
+
     }
     egoera = JOKOA_egoera(jokalaria, oztopoa);
   } while (egoera == JOLASTEN);
@@ -183,7 +205,7 @@ EGOERA jokatu(void)
 EGOERA JOKOA_egoera(JOKO_ELEMENTUA jokalaria, JOKO_ELEMENTUA oztopoa) {
   EGOERA  ret = JOLASTEN;
   int bizitzakGaldu=3;
-  if (jokalaria.pos.x >oztopoa.pos.x - 32 && jokalaria.pos.x <oztopoa.pos.x + 32 && jokalaria.pos.y + 32 >oztopoa.pos.y - 32 && jokalaria.pos.y - 32 <oztopoa.pos.y + 32) {
+  if (jokalaria.pos.x >oztopoa.pos.x - 30 && jokalaria.pos.x <oztopoa.pos.x + 30 && jokalaria.pos.y + 22 >oztopoa.pos.y - 34 && jokalaria.pos.y - 22 <oztopoa.pos.y + 30) {
     ret = GALDU;
   }
   else if (jokalaria.pos.x > 476 || jokalaria.pos.x < 64)  
@@ -250,6 +272,14 @@ void argazkiakAldatu(n)
 		ArgazkiaAplikatu(DEPOSITO4_IMAGE);
 	}
 }
+/*void argazkiakMugiarazi(JOKO_ELEMENTUA oztopoa)
+{
+	POSIZIOA aux;
+	aux = ERREALITATE_FISIKOA_mugimendua(oztopoa.pos);
+	oztopoa.pos.y = aux.y;
+	irudiaMugitu(oztopoa.id, oztopoa.pos.x, oztopoa.pos.y);
+
+}*/
 void ArgazkiaAplikatu(char *argazkia)
 {
 	int id = 1;
@@ -258,6 +288,32 @@ void ArgazkiaAplikatu(char *argazkia)
 	irudiakMarraztu();
 	pantailaBerriztu();
 }
+int aukeratuBidea()
+{
+	int dBide = 0, Bide;
+
+	Bide = rand() % 4;
+
+	if (Bide == 0)
+	{
+		dBide = 0;
+	}
+	if (Bide == 1)
+	{
+		dBide = 125;
+	}
+	if (Bide == 2)
+	{
+		dBide = 250;
+	}
+	if (Bide == 3)
+	{
+		dBide = 365;
+
+	}
+	return dBide;
+}
+
 
 int BUKAERA_irudiaBistaratu() {
   int id = -1;
