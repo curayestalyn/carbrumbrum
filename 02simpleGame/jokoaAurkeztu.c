@@ -8,33 +8,37 @@
 #include <windows.h>
 #include <stdlib.h>
 
-#define STARTMENU_IMAGE ".\\img\\menu\\startmenu.bmp"
-#define STARTMENU2_IMAGE ".\\img\\menu\\startmenu2.bmp"
+#define STARTMENU_IMAGE ".\\img\\menu\\hasijokoa.bmp"
+//#define HASIJOKOA_IMAGE ".\\img\\menu\\hasijokoa.bmp"
+#define ITXIJOKOA_IMAGE ".\\img\\menu\\itxijokoa.bmp"
+#define LAGUNTZA_IMAGE ".\\img\\menu\\laguntza.bmp"
 #define ONGI_ETORRI_MEZUA "PRESS RETURN TO START THE GAME"
+
 void sarreraMezuaIdatzi();
 void sarreraArgazkiaAplikatu(argazkia);
-void argazkiaAldatu(n);
+void argazkiaAldatu(menuAukerak);
 
 void jokoaAurkeztu(void)
 {
-	int ebentu = 0, n=4;
+	int ebentu = 0, menuAukerak=4;
 
 	sarreraMezuaIdatzi();
 	do
 	{
 		ebentu = ebentuaJasoGertatuBada();
 		if (ebentu == TECLA_DOWN) {
-			n--;
-			argazkiaAldatu(n);
+			menuAukerak--;
+			argazkiaAldatu(menuAukerak);
 		}
 		if (ebentu == TECLA_UP) {
-			n++;
-			argazkiaAldatu(n);
+			menuAukerak++;
+			argazkiaAldatu(menuAukerak);
 		}
 	} while (ebentu != TECLA_RETURN);
 	pantailaGarbitu();
 	pantailaBerriztu();
 }
+
 
 void sarreraMezuaIdatzi()
 {
@@ -42,7 +46,6 @@ void sarreraMezuaIdatzi()
 	id = irudiaKargatu(STARTMENU_IMAGE);
 	irudiaMugitu(id, 0, 0);
 	irudiakMarraztu();
-	textuaIdatzi(200, 450, ONGI_ETORRI_MEZUA);
 	pantailaBerriztu();
 }
 
@@ -52,18 +55,20 @@ void sarreraArgazkiaAplikatu(char *argazkia)
 	id = irudiaKargatu(argazkia);
 	irudiaMugitu(id, 0, 0);
 	irudiakMarraztu();
-	textuaIdatzi(200, 450, ONGI_ETORRI_MEZUA);
 	pantailaBerriztu();
 }
 
-void argazkiaAldatu(n)
+void argazkiaAldatu(menuAukerak)
 {
-	if (n >= 5) { n = 4; }
-	if (n <= 0) { n = 1; }
-	if (n == 4) {
+	if (menuAukerak >= 5) { menuAukerak = 4; }
+	if (menuAukerak <= 0) { menuAukerak = 1; }
+	if (menuAukerak == 4) {
 		sarreraArgazkiaAplikatu(STARTMENU_IMAGE);
 	}
-	if (n == 3) {
-		sarreraArgazkiaAplikatu(STARTMENU2_IMAGE);
+	if (menuAukerak == 3) {
+		sarreraArgazkiaAplikatu(ITXIJOKOA_IMAGE);
+	}
+	if (menuAukerak == 2) {
+		sarreraArgazkiaAplikatu(LAGUNTZA_IMAGE);
 	}
 }

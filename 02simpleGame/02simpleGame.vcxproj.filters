@@ -68,5 +68,8 @@
     <ClInclude Include="game02\game02.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="jokoaAurkeztu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
