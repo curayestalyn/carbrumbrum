@@ -4,19 +4,16 @@
 #include "ebentoak.h"
 #include "text.h"
 #include "soinua.h"
+#include "jokoaAurkeztu.h"
 #include <stdio.h>
 #include <windows.h>
 #include <stdlib.h>
-
+/********************IRUDIAK****************************/
 #define STARTMENU_IMAGE ".\\img\\menu\\hasijokoa.bmp"
 //#define HASIJOKOA_IMAGE ".\\img\\menu\\hasijokoa.bmp"
 #define ITXIJOKOA_IMAGE ".\\img\\menu\\itxijokoa.bmp"
 #define LAGUNTZA_IMAGE ".\\img\\menu\\laguntza.bmp"
 #define ONGI_ETORRI_MEZUA "PRESS RETURN TO START THE GAME"
-
-void sarreraMezuaIdatzi();
-void sarreraArgazkiaAplikatu(argazkia);
-void argazkiaAldatu(menuAukerak);
 
 void jokoaAurkeztu(void)
 {
@@ -35,10 +32,23 @@ void jokoaAurkeztu(void)
 			argazkiaAldatu(menuAukerak);
 		}
 	} while (ebentu != TECLA_RETURN);
+	zeinPantailaAukeratu(menuAukerak);
 	pantailaGarbitu();
 	pantailaBerriztu();
 }
 
+void zeinPantailaAukeratu(n) {
+	EGOERA egoera;
+	int jarraitu = 0;
+	if (n == 4) {
+		do
+		{
+			egoera = jokatu();
+			jarraitu = jokoAmaierakoa(egoera);
+		} while (jarraitu);
+
+	}
+}
 
 void sarreraMezuaIdatzi()
 {

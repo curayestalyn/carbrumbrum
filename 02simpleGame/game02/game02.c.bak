@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <stdlib.h>
-//#include "jokoaAurkeztu.h"
+#include "jokoaAurkeztu.h"
 
 /**************************IRUDIAK**********************************/
 #define TXANPONA_IMAGE ".\\img\\elementua\\txanpona.bmp"
@@ -46,15 +46,6 @@
 int JOKOAREN_argazkiakGehitu(argazkia);
 POSIZIOA ERREALITATE_FISIKOA_mugimendua(POSIZIOA posizioa);
 EGOERA JOKOA_egoera(JOKO_ELEMENTUA jokalaria, JOKO_ELEMENTUA oztopoa, int bateria, int bizitzakAldatu);
-/**************************FUNTZIOAK_H**********************************/
-int BUKAERA_irudiaBistaratu();
-void ArgazkiaAplikatu(char *argazkia);
-void argazkiakAldatu(kontagailuEnergia);
-void bateriaArgazkiaAplikatu(char *argazkia);
-void bateriaArgazkiaAldatu(kontagailuBateria);
-int aukeratuBidea();
-int zenbakiRandom();
-
 
 
 
@@ -66,7 +57,18 @@ int zenbakiRandom();
 EGOERA jokatu(void) 
 {
   EGOERA  egoera = JOLASTEN;
-  int ebentu = 0, bidea = 0, numero = 0, kontagailu = 0, kont = 0, bigarrenKontagailua = 0, bateria = 0, bizitzakAldatu = 0, kontCarCrashes = 0, txanponakScore = 0, kontagailuEnergia = 1, kontagailuBateria = 1, denbora = 2;
+  
+  
+  
+  //int ebentu = 0, bidea = 0, numero = 0, kontagailu = 0, kont = 0, bigarrenKontagailua = 0, bateria = 0, bizitzakAldatu = 0, kontCarCrashes = 0, txanponakScore = 0, kontagailuEnergia = 1, kontagailuBateria = 1, denbora = 2;
+  
+  int ebentu = 0;
+  int kontagailuEnergia= 1, kontagailuBateria = 1, bateria = 0, bizitzakAldatu = 0, kontCarCrashes = 0;
+  int bidea = 0, numero = 0, denbora = 2, kontagailu = 0, bigarrenKontagailua = 0, kont = 0;
+  int txanponakScore = 0;
+
+
+  
   JOKO_ELEMENTUA oztopoa, oztopoa2, oztopoa3, oztopoa4, oztopoa5, oztopoa6, jokalaria, gasolina, background, marrak1, marrak2, txanpona, energybull, deposito1, deposito2, deposito3, deposito4, bizitzak1, bizitzak2, bizitzak3, bateria1, bateria2, bateria3, bateria4, bateria5;
   POSIZIOA aux;
   
@@ -292,6 +294,10 @@ EGOERA jokatu(void)
 	}
 	if (jokalaria.pos.x > txanpona.pos.x - 20 && jokalaria.pos.x <txanpona.pos.x + 20 && jokalaria.pos.y + 22 >txanpona.pos.y - 15 && jokalaria.pos.y - 22 < txanpona.pos.y + 15)
 	{
+		int idAudioGame;
+		idAudioGame = loadSound(TXANPON_SOINUA);
+		playSound(idAudioGame);
+
 		numero = zenbakiRandom();
 		txanpona.pos.y = -100 - numero;
 		bidea = aukeratuBidea();
@@ -319,6 +325,11 @@ EGOERA jokatu(void)
 	{
 		kontagailuEnergia++;
 		argazkiakAldatu(kontagailuEnergia);
+
+		int idAudioGame;
+		idAudioGame = loadSound(REDBULL_SOINUA);
+		playSound(idAudioGame);
+
 		numero = zenbakiRandom();
 		energybull.pos.y = -100 - numero;
 		bidea = aukeratuBidea();
@@ -336,19 +347,27 @@ EGOERA jokatu(void)
 		}
 		else if (kontCarCrashes == 1)
 		{
+			int idAudioGame;
+			idAudioGame = loadSound(BIZITZA_SOINUA);
+			playSound(idAudioGame);
+
 			bizitzakAldatu = 1;
 			int id = 1;
 			oztopoa.pos.y = -200;
-			//irudiaMugitu(bizitzak1.id, 540, -1150);
+			irudiaMugitu(bizitzak1.id, 540, -1150);
 			irudiaMugitu(bizitzak2.id, 574, 17);
 			irudiaMugitu(bizitzak3.id, 607, 17);
 		}
 		else if (kontCarCrashes == 2)
 		{
+			int idAudioGame;
+			idAudioGame = loadSound(BIZITZA_SOINUA);
+			playSound(idAudioGame);
+
 			bizitzakAldatu = 2;
 			int id = 1;
 			oztopoa.pos.y = -200;
-			//irudiaMugitu(bizitzak2.id, 574, -1150);
+			irudiaMugitu(bizitzak2.id, 574, -1150);
 			irudiaMugitu(bizitzak3.id, 607, 17);
 		}
 		else
@@ -471,12 +490,12 @@ EGOERA jokatu(void)
 	{
 		egoera = JOKOA_egoera(jokalaria, oztopoa6, bateria, bizitzakAldatu);
 	}
-	if (ebentu == TECLA_ESCAPE)
+  } while (egoera == JOLASTEN && ebentu !=TECLA_ESCAPE);
+  
+  if (ebentu == TECLA_ESCAPE)
 	{
 		jokoaAurkeztu();
 	}
-  } while (egoera == JOLASTEN);
-  
   irudiaKendu(jokalaria.id);
   toggleMusic();
   audioTerminate();
@@ -625,10 +644,11 @@ int zenbakiRandom() {
 	numero = rand() % 1000;
 	return numero;
 }
+/*
 void txanponakTextua(char* txanponakScore) {
 	textuaGaitu();
 	textuaIdatzi(200,230, txanponakScore);
-}
+}*/
 
 int BUKAERA_irudiaBistaratu() {
   int id = -1;

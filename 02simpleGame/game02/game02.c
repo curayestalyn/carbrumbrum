@@ -490,12 +490,13 @@ EGOERA jokatu(void)
 	{
 		egoera = JOKOA_egoera(jokalaria, oztopoa6, bateria, bizitzakAldatu);
 	}
-	if (ebentu == TECLA_ESCAPE)
+  } while (egoera == JOLASTEN && ebentu !=TECLA_ESCAPE);
+  
+  if (ebentu == TECLA_ESCAPE)
 	{
 		jokoaAurkeztu();
 	}
-  } while (egoera == JOLASTEN);
-  
+	
   irudiaKendu(jokalaria.id);
   toggleMusic();
   audioTerminate();

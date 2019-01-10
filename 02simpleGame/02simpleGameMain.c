@@ -10,6 +10,7 @@
 #include "ebentoak.h"
 #include "text.h"
 #include "soinua.h"
+#include "jokoaAurkeztu.h"
 //---------------------------------------------------------------------------------
 
 #include <stdio.h>
@@ -19,21 +20,24 @@
 
 
 int main(int argc, char * str[]) {
-  int jarraitu = 0;
-  EGOERA egoera;
+  //int jarraitu = 0;
+  //EGOERA egoera;
  
   if (sgHasieratu() == -1) 
   {
     fprintf(stderr, "Unable to set 640x480 video: %s\n", SDL_GetError());
     return 1;
   }
-  textuaGaitu(); 
+  textuaGaitu();
+  jokoaAurkeztu();
+  /*
   do
   {
     jokoaAurkeztu();
     egoera = jokatu();
     jarraitu = jokoAmaierakoa(egoera);
   } while (jarraitu);
+  */
   sgItxi();
   return 0;
 }
