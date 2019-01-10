@@ -335,12 +335,25 @@ EGOERA jokatu(void)
 		bidea = aukeratuBidea();
 		energybull.pos.x = 95 + bidea;
 	}
-	if (jokalaria.pos.x > oztopoa.pos.x - 30 && jokalaria.pos.x <oztopoa.pos.x + 30 && jokalaria.pos.y + 22 >oztopoa.pos.y - 34 && jokalaria.pos.y - 22 < oztopoa.pos.y + 30) {
+	
+	if (jokalaria.pos.x > oztopoa.pos.x - 30 && jokalaria.pos.x < oztopoa.pos.x + 30 && jokalaria.pos.y + 22 > oztopoa.pos.y - 34 && jokalaria.pos.y - 22 < oztopoa.pos.y + 30 || jokalaria.pos.x > oztopoa2.pos.x - 30 && jokalaria.pos.x < oztopoa2.pos.x + 30 && jokalaria.pos.y + 22 > oztopoa2.pos.y - 34 && jokalaria.pos.y - 22 < oztopoa2.pos.y + 30 || jokalaria.pos.x > oztopoa3.pos.x - 30 && jokalaria.pos.x < oztopoa3.pos.x + 30 && jokalaria.pos.y + 22 > oztopoa3.pos.y - 34 && jokalaria.pos.y - 22 < oztopoa3.pos.y + 30 || jokalaria.pos.x > oztopoa4.pos.x - 30 && jokalaria.pos.x < oztopoa4.pos.x + 30 && jokalaria.pos.y + 22 > oztopoa4.pos.y - 34 && jokalaria.pos.y - 22 < oztopoa4.pos.y + 30 || jokalaria.pos.x > oztopoa5.pos.x - 30 && jokalaria.pos.x < oztopoa5.pos.x + 30 && jokalaria.pos.y + 22 > oztopoa5.pos.y - 34 && jokalaria.pos.y - 22 < oztopoa5.pos.y + 30 || jokalaria.pos.x > oztopoa6.pos.x - 30 && jokalaria.pos.x < oztopoa6.pos.x + 30 && jokalaria.pos.y + 22 > oztopoa6.pos.y - 34 && jokalaria.pos.y - 22 < oztopoa6.pos.y + 30) {
 		kontCarCrashes++;
 		if (kontCarCrashes == 0)
 		{
 			bizitzakAldatu = 0;
-			oztopoa.pos.y = -200;
+			bidea = rand() % 1000;
+			oztopoa.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa2.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa3.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa4.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa5.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa6.pos.y = -200 - bidea;
+
 			irudiaMugitu(bizitzak1.id, 540, 17);
 			irudiaMugitu(bizitzak2.id, 574, 17);
 			irudiaMugitu(bizitzak3.id, 607, 17);
@@ -352,8 +365,19 @@ EGOERA jokatu(void)
 			playSound(idAudioGame);
 
 			bizitzakAldatu = 1;
-			int id = 1;
-			oztopoa.pos.y = -200;
+			bidea = rand() % 1000;
+			oztopoa.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa2.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa3.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa4.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa5.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa6.pos.y = -200 - bidea;
+
 			irudiaMugitu(bizitzak1.id, 540, -1150);
 			irudiaMugitu(bizitzak2.id, 574, 17);
 			irudiaMugitu(bizitzak3.id, 607, 17);
@@ -365,8 +389,18 @@ EGOERA jokatu(void)
 			playSound(idAudioGame);
 
 			bizitzakAldatu = 2;
-			int id = 1;
-			oztopoa.pos.y = -200;
+			bidea = rand() % 1000;
+			oztopoa.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa2.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa3.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa4.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa5.pos.y = -200 - bidea;
+			bidea = rand() % 1000;
+			oztopoa6.pos.y = -200 - bidea;
 			irudiaMugitu(bizitzak2.id, 574, -1150);
 			irudiaMugitu(bizitzak3.id, 607, 17);
 		}
