@@ -25,5 +25,4 @@ void bateriaArgazkiaAldatu(kontagailuBateria);
 int aukeratuBidea();
 int zenbakiRandom();
 
-
 #endif

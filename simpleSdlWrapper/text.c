@@ -39,6 +39,7 @@ void textuaIdatzi(int x, int y, char *str)
   SDL_DestroyTexture(mTexture);
 }
 
+
 void textuaDesgaitu(void)
 {
   if (font != 0) TTF_CloseFont(font);
