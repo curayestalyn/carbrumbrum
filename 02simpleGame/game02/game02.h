@@ -24,5 +24,4 @@ void bateriaArgazkiaAplikatu(char *argazkia);
 void bateriaArgazkiaAldatu(kontagailuBateria);
 int aukeratuBidea();
 int zenbakiRandom();
-
 #endif
