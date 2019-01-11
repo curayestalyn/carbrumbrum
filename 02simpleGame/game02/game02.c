@@ -34,6 +34,9 @@
 #define BATERIA4_IMAGE ".\\img\\elementua\\bateria4.bmp"
 #define BATERIA5_IMAGE ".\\img\\elementua\\bateria5.bmp"
 #define GASOLINA_IMAGE ".\\img\\elementua\\petrol.bmp"
+#define DESIERTO_IMAGE ".\\img\\desierto.bmp"
+#define CIELO1_IMAGE ".\\img\\cielo1.bmp"
+#define CIELO2_IMAGE ".\\img\\cielo2.bmp"
 /**************************SOINUA**********************************/
 #define JOKOA_SOUND ".\\sound\\132TRANCE_02.wav"
 #define JOKOA_SOUND_WIN ".\\sound\\BugleCall.wav"
@@ -69,9 +72,15 @@ EGOERA jokatu(void)
 
 
   
-  JOKO_ELEMENTUA oztopoa, oztopoa2, oztopoa3, oztopoa4, oztopoa5, oztopoa6, jokalaria, gasolina, background, marrak1, marrak2, txanpona, energybull, deposito1, deposito2, deposito3, deposito4, bizitzak1, bizitzak2, bizitzak3, bateria1, bateria2, bateria3, bateria4, bateria5;
+  JOKO_ELEMENTUA cielo1, cielo2, desierto, oztopoa, oztopoa2, oztopoa3, oztopoa4, oztopoa5, oztopoa6, jokalaria, gasolina, background, marrak1, marrak2, txanpona, energybull, deposito1, deposito2, deposito3, deposito4, bizitzak1, bizitzak2, bizitzak3, bateria1, bateria2, bateria3, bateria4, bateria5;
   POSIZIOA aux;
   
+  cielo1.pos.x = 0;
+  cielo1.pos.y = -480;
+
+  cielo2.pos.x = 0;
+  cielo2.pos.y = -960;
+
   background.pos.x = 0;
   background.pos.y = 0;
 
@@ -126,10 +135,15 @@ EGOERA jokatu(void)
   bizitzak3.pos.x = 607;
   bizitzak3.pos.y = 17;
 
+  desierto.pos.x = 0;
+  desierto.pos.y = -480;
   audioInit();
   loadTheMusic(JOKOA_SOUND);
   playMusic();
   background.id = JOKOAREN_argazkiakGehitu(BACKGROUND_IMAGE);
+  desierto.id = JOKOAREN_argazkiakGehitu(DESIERTO_IMAGE);
+  cielo1.id = JOKOAREN_argazkiakGehitu(CIELO1_IMAGE);
+  cielo2.id = JOKOAREN_argazkiakGehitu(CIELO2_IMAGE);
   oztopoa.id = JOKOAREN_argazkiakGehitu(KOTXEA1_IMAGE);
   oztopoa2.id = JOKOAREN_argazkiakGehitu(KOTXEA2_IMAGE);
   oztopoa3.id = JOKOAREN_argazkiakGehitu(KOTXEA3_IMAGE);
@@ -154,8 +168,10 @@ EGOERA jokatu(void)
   bateria4.id = JOKOAREN_argazkiakGehitu(BATERIA4_IMAGE);
   bateria5.id = JOKOAREN_argazkiakGehitu(BATERIA5_IMAGE);
   gasolina.id = JOKOAREN_argazkiakGehitu(GASOLINA_IMAGE);
-  
- 
+
+	irudiaMugitu(cielo1.id, cielo1.pos.x, cielo1.pos.y);
+	irudiaMugitu(cielo2.id, cielo2.pos.x, cielo2.pos.y);
+	irudiaMugitu(desierto.id, desierto.pos.x, desierto.pos.y);
 	irudiaMugitu(bizitzak1.id, bizitzak1.pos.x, bizitzak1.pos.y);
  	irudiaMugitu(bizitzak2.id, bizitzak2.pos.x, bizitzak2.pos.y);
 	irudiaMugitu(bizitzak3.id, bizitzak3.pos.x, bizitzak3.pos.y);
@@ -200,6 +216,29 @@ EGOERA jokatu(void)
 		aux = ERREALITATE_FISIKOA_mugimendua(oztopoa6.pos);
 		oztopoa6.pos.y = aux.y;
 		irudiaMugitu(oztopoa6.id, oztopoa6.pos.x, oztopoa6.pos.y);
+	}
+	if (kont < 8000 && kont>5000) {
+		aux = ERREALITATE_FISIKOA_mugimendua(desierto.pos);
+		desierto.pos.y = aux.y;
+		irudiaMugitu(desierto.id, desierto.pos.x, desierto.pos.y);
+		if (desierto.pos.y > 0) {
+			irudiaMugitu(desierto.id, 0, 0);
+		}
+	}
+	if (kont > 8000){
+		aux = ERREALITATE_FISIKOA_mugimendua(cielo1.pos);
+		cielo1.pos.y = aux.y;
+		irudiaMugitu(cielo1.id, cielo1.pos.x, cielo1.pos.y);
+
+		aux = ERREALITATE_FISIKOA_mugimendua(cielo2.pos);
+		cielo2.pos.y = aux.y;
+		irudiaMugitu(cielo2.id, cielo2.pos.x, cielo2.pos.y);
+		if (cielo1.pos.y > 480) {
+			cielo1.pos.y = -480;
+		}
+		if (cielo2.pos.y > 480) {
+			cielo2.pos.y = -480;
+		}
 	}
 	
 	aux = ERREALITATE_FISIKOA_mugimendua(marrak1.pos);
@@ -261,6 +300,7 @@ EGOERA jokatu(void)
 		denbora = 5;
 		kontagailuEnergia= 1;
 		argazkiakAldatu(kontagailuEnergia);
+		
 	}
 	//Moteldu denbora jartzeko
 	if (denbora == 5) {
@@ -285,6 +325,12 @@ EGOERA jokatu(void)
 	if (marrak2.pos.y > 480) {
 		marrak2.pos.y = -480;
 	}
+	/*if (cielo1.pos.y > 480) {
+		cielo1.pos.y = -480;
+	}
+	if (cielo2.pos.y > 480) {
+		cielo2.pos.y = -480;
+	}*/
 	if (txanpona.pos.y > 480)
 	{
 		numero = zenbakiRandom();
