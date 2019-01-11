@@ -65,7 +65,7 @@ EGOERA jokatu(void)
   
   int ebentu = 0;
   int kontagailuEnergia= 1, kontagailuBateria = 1, bateria = 0, bizitzakAldatu = 0, kontCarCrashes = 0;
-  int bidea = 0, numero = 0, denbora = 2, kontagailu = 0, bigarrenKontagailua = 0, kont = 0;
+  int bidea = 0, numero = 0, denbora = 1, kontagailu = 0, bigarrenKontagailua = 0, kont = 0;
   int txanponakScore = 0;
   char buffer[50];
 
@@ -165,6 +165,7 @@ EGOERA jokatu(void)
   do {
 	Sleep(denbora);
 	kont++;
+	pantailaGarbitu();
 	/*******************OZTOPOAK*******************/
 	aux = ERREALITATE_FISIKOA_mugimendua(oztopoa.pos);
 	oztopoa.pos.y = aux.y;
@@ -257,7 +258,7 @@ EGOERA jokatu(void)
 	
 	
     irudiakMarraztu();
-    pantailaBerriztu();
+    //pantailaBerriztu();
     ebentu = ebentuaJasoGertatuBada();
 	//Moteltzeko abilitatea izateko
 	if (ebentu == TECLA_SPACE && kontagailuEnergia >= 4) {
@@ -527,11 +528,10 @@ EGOERA jokatu(void)
 	{
 		egoera = JOKOA_egoera(jokalaria, oztopoa6, bateria, bizitzakAldatu);
 	}
+		
 		sprintf(buffer, "%d", txanponakScore);
 		textuaIdatzi(574, 200, buffer);
 		pantailaBerriztu();
-		
-
   } while (egoera == JOLASTEN && ebentu !=TECLA_ESCAPE);
   
   if (ebentu == TECLA_ESCAPE)
