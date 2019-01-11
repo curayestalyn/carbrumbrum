@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "game02.h"
 #include "imagen.h"
 #include "graphics.h"
@@ -69,8 +70,9 @@ EGOERA jokatu(void)
   int kontagailuEnergia= 1, kontagailuBateria = 1, bateria = 0, bizitzakAldatu = 0, kontCarCrashes = 0;
   int bidea = 0, numero = 0, denbora = 2, kontagailu = 0, bigarrenKontagailua = 0, kont = 0;
   int txanponakScore = 0;
-
-
+  char buffer[50];
+  
+ 
   
   JOKO_ELEMENTUA cielo1, cielo2, desierto, oztopoa, oztopoa2, oztopoa3, oztopoa4, oztopoa5, oztopoa6, jokalaria, gasolina, background, marrak1, marrak2, txanpona, energybull, deposito1, deposito2, deposito3, deposito4, bizitzak1, bizitzak2, bizitzak3, bateria1, bateria2, bateria3, bateria4, bateria5;
   POSIZIOA aux;
@@ -175,6 +177,7 @@ EGOERA jokatu(void)
 	irudiaMugitu(bizitzak1.id, bizitzak1.pos.x, bizitzak1.pos.y);
  	irudiaMugitu(bizitzak2.id, bizitzak2.pos.x, bizitzak2.pos.y);
 	irudiaMugitu(bizitzak3.id, bizitzak3.pos.x, bizitzak3.pos.y);
+	
   do {
 	Sleep(denbora);
 	kont++;
@@ -570,6 +573,11 @@ EGOERA jokatu(void)
 	{
 		egoera = JOKOA_egoera(jokalaria, oztopoa6, bateria, bizitzakAldatu);
 	}
+		sprintf(buffer, "%d", txanponakScore);
+		textuaIdatzi(574, 200, buffer);
+		pantailaBerriztu();
+		
+
   } while (egoera == JOLASTEN && ebentu !=TECLA_ESCAPE);
   
   if (ebentu == TECLA_ESCAPE)
@@ -577,6 +585,7 @@ EGOERA jokatu(void)
 		jokoaAurkeztu();
 	}
 	
+ 
   irudiaKendu(jokalaria.id);
   toggleMusic();
   audioTerminate();
@@ -637,6 +646,10 @@ int  jokoAmaierakoa(EGOERA egoera)
   do 
   {
     ebentu = ebentuaJasoGertatuBada();
+	if (ebentu == TECLA_ESCAPE)
+	{
+		jokoaAurkeztu();
+	}
   } while ((ebentu!= TECLA_RETURN) && (ebentu!= SAGU_BOTOIA_ESKUMA));
   audioTerminate();
   irudiaKendu(id);
@@ -725,11 +738,7 @@ int zenbakiRandom() {
 	numero = rand() % 1000;
 	return numero;
 }
-/*
-void txanponakTextua(char* txanponakScore) {
-	textuaGaitu();
-	textuaIdatzi(200,230, txanponakScore);
-}*/
+
 
 int BUKAERA_irudiaBistaratu() {
   int id = -1;

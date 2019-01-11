@@ -14,10 +14,15 @@
 #define ITXIJOKOA_IMAGE ".\\img\\menu\\itxijokoa.bmp"
 #define LAGUNTZA_IMAGE ".\\img\\menu\\laguntza.bmp"
 #define ONGI_ETORRI_MEZUA "PRESS RETURN TO START THE GAME"
+#define MENU_SOINUA ".\\sound\\ispace.wav"
 
 void jokoaAurkeztu(void)
 {
 	int ebentu = 0, menuAukerak=4;
+	
+	audioInit();
+	loadTheMusic(MENU_SOINUA);
+	playMusic();
 
 	sarreraMezuaIdatzi();
 	do
