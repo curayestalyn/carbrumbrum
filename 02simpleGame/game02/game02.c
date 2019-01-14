@@ -177,7 +177,7 @@ EGOERA jokatu(void)
 	irudiaMugitu(bizitzak1.id, bizitzak1.pos.x, bizitzak1.pos.y);
  	irudiaMugitu(bizitzak2.id, bizitzak2.pos.x, bizitzak2.pos.y);
 	irudiaMugitu(bizitzak3.id, bizitzak3.pos.x, bizitzak3.pos.y);
-	
+/***************LOOP BEGINNING*********/
   do {
 	Sleep(denbora);
 	kont++;
@@ -553,7 +553,18 @@ EGOERA jokatu(void)
 	bigarrenKontagailua++;
 
     egoera = JOKOA_egoera(jokalaria, oztopoa, bateria, bizitzakAldatu);
+	/*jump*/
 
+	if (ebentu == TECLA_g)
+	{
+		jokalaria.pos.x = jokalaria.pos.x + 35;
+
+	}
+	else if (ebentu == TECLA_f)
+	{
+		jokalaria.pos.x = jokalaria.pos.x - 35;
+	}
+	/*jump*/
 	if (egoera == JOLASTEN)
 	{
 		egoera = JOKOA_egoera(jokalaria, oztopoa2, bateria, bizitzakAldatu);
@@ -577,9 +588,13 @@ EGOERA jokatu(void)
 		
 		sprintf(buffer, "%d", txanponakScore);
 		textuaIdatzi(574, 200, buffer);
+		sprintf(buffer, "%d", jokalaria.pos.x);
+		textuaIdatzi(574, 150, buffer);
+		sprintf(buffer, "%d", jokalaria.pos.y);
+		textuaIdatzi(574, 130, buffer);
 		pantailaBerriztu();
   } while (egoera == JOLASTEN && ebentu !=TECLA_ESCAPE);
-  
+    /*******************************LOOP FINISIHED*****************/
   if (ebentu == TECLA_ESCAPE)
 	{
 		jokoaAurkeztu();

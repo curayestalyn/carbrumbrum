@@ -15,11 +15,13 @@
 #define LAGUNTZA_IMAGE ".\\img\\menu\\laguntza.bmp"
 #define ONGI_ETORRI_MEZUA "PRESS RETURN TO START THE GAME"
 #define MENU_SOINUA ".\\sound\\ispace.wav"
+#define MENULAGUNTZA_IMAGE ".\\img\\menu\\menulaguntza.bmp"
 
 void jokoaAurkeztu(void)
 {
-	int ebentu = 0, menuAukerak=4;
-	
+	int ebentu = 0, menuAukerak = 4;
+	//menulanguntza.id = JOKOAREN_argazkiakGehitu(MENULAGUNTZA_IMAGE);
+
 	audioInit();
 	loadTheMusic(MENU_SOINUA);
 	playMusic();
@@ -42,16 +44,31 @@ void jokoaAurkeztu(void)
 	pantailaBerriztu();
 }
 
-void zeinPantailaAukeratu(n) {
+void zeinPantailaAukeratu(menuAukerak) {
 	EGOERA egoera;
+	int ebentu = 0;
 	int jarraitu = 0;
-	if (n == 4) {
+	ebentu = ebentuaJasoGertatuBada();
+	if (menuAukerak == 4) {
 		do
 		{
 			egoera = jokatu();
 			jarraitu = jokoAmaierakoa(egoera);
 		} while (jarraitu);
-
+	}
+	else if (menuAukerak == 2)
+	{
+		int kont = 0;
+		kont++;
+		while (ebentu != TECLA_ESCAPE)
+		{
+			if (kont == 1) {
+				irudiaKargatu(MENULAGUNTZA_IMAGE);
+			}
+			kont++;
+		}
+		//sarreraArgazkiaAplikatu(STARTMENU_IMAGE);
+		jokoaAurkeztu();
 	}
 }
 
@@ -82,6 +99,7 @@ void argazkiaAldatu(menuAukerak)
 	}
 	if (menuAukerak == 3) {
 		sarreraArgazkiaAplikatu(ITXIJOKOA_IMAGE);
+		
 	}
 	if (menuAukerak == 2) {
 		sarreraArgazkiaAplikatu(LAGUNTZA_IMAGE);

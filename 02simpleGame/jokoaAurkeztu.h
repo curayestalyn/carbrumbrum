@@ -3,7 +3,7 @@
 #include "ourTypes.h"
 void sarreraMezuaIdatzi();
 void sarreraArgazkiaAplikatu(argazkia);
-void argazkiaAldatu(n);
-void zeinPantailaAukeratu(n);
+void argazkiaAldatu(menuAukerak);
+void zeinPantailaAukeratu(menuAukerak);
 
 #endif
