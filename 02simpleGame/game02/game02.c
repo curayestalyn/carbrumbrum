@@ -47,7 +47,7 @@
 #define TXANPON_SOINUA ".\\sound\\pickingupcoins.wav"
 #define REDBULL_SOINUA ".\\sound\\redbull.wav"
 #define BIZITZA_SOINUA ".\\sound\\losinghearts.wav"
-int JOKOAREN_argazkiakGehitu(argazkia);
+//int JOKOAREN_argazkiakGehitu(argazkia);
 POSIZIOA ERREALITATE_FISIKOA_mugimendua(POSIZIOA posizioa);
 EGOERA JOKOA_egoera(JOKO_ELEMENTUA jokalaria, JOKO_ELEMENTUA oztopoa, int bateria, int bizitzakAldatu);
 
@@ -70,7 +70,7 @@ EGOERA jokatu(void)
   int kontagailuEnergia= 1, kontagailuBateria = 1, bateria = 0, bizitzakAldatu = 0, kontCarCrashes = 0;
   int bidea = 0, numero = 0, denbora = 1, kontagailu = 0, bigarrenKontagailua = 0, kont = 0;
   int txanponakScore = 0;
-  char buffer[50];
+//  char buffer[50];
   
  
   
@@ -183,60 +183,68 @@ EGOERA jokatu(void)
 	kont++;
 	pantailaGarbitu();
 	/*******************OZTOPOAK*******************/
-	aux = ERREALITATE_FISIKOA_mugimendua(oztopoa.pos);
+	oztopoa = argazkiakMugiarazi(oztopoa);
+	/*aux = ERREALITATE_FISIKOA_mugimendua(oztopoa.pos);
 	oztopoa.pos.y = aux.y;
-	irudiaMugitu(oztopoa.id, oztopoa.pos.x, oztopoa.pos.y);
+	irudiaMugitu(oztopoa.id, oztopoa.pos.x, oztopoa.pos.y);*/
 	
 	if (kont > 1000)
 	{
-		aux = ERREALITATE_FISIKOA_mugimendua(oztopoa2.pos);
+		oztopoa2= argazkiakMugiarazi(oztopoa2);
+		/*aux = ERREALITATE_FISIKOA_mugimendua(oztopoa2.pos);
 		oztopoa2.pos.y = aux.y;
-		irudiaMugitu(oztopoa2.id, oztopoa2.pos.x, oztopoa2.pos.y);
+		irudiaMugitu(oztopoa2.id, oztopoa2.pos.x, oztopoa2.pos.y);*/
 	}
 
 	if (kont > 2000)
 	{
-		aux = ERREALITATE_FISIKOA_mugimendua(oztopoa3.pos);
+		oztopoa3 = argazkiakMugiarazi(oztopoa3);
+		/*aux = ERREALITATE_FISIKOA_mugimendua(oztopoa3.pos);
 		oztopoa3.pos.y = aux.y;
-		irudiaMugitu(oztopoa3.id, oztopoa3.pos.x, oztopoa3.pos.y);
+		irudiaMugitu(oztopoa3.id, oztopoa3.pos.x, oztopoa3.pos.y);*/
 	}
 
 	if (kont > 3000)
 	{
-		aux = ERREALITATE_FISIKOA_mugimendua(oztopoa4.pos);
+		oztopoa4= argazkiakMugiarazi(oztopoa4);
+		/*aux = ERREALITATE_FISIKOA_mugimendua(oztopoa4.pos);
 		oztopoa4.pos.y = aux.y;
-		irudiaMugitu(oztopoa4.id, oztopoa4.pos.x, oztopoa4.pos.y);
+		irudiaMugitu(oztopoa4.id, oztopoa4.pos.x, oztopoa4.pos.y);*/
 	}
 
 	if (kont > 4000)
 	{
-		aux = ERREALITATE_FISIKOA_mugimendua(oztopoa5.pos);
+		oztopoa5= argazkiakMugiarazi(oztopoa5);
+		/*aux = ERREALITATE_FISIKOA_mugimendua(oztopoa5.pos);
 		oztopoa5.pos.y = aux.y;
-		irudiaMugitu(oztopoa5.id, oztopoa5.pos.x, oztopoa5.pos.y);
+		irudiaMugitu(oztopoa5.id, oztopoa5.pos.x, oztopoa5.pos.y);*/
 	}
 
 	if (kont > 50000)
 	{
-		aux = ERREALITATE_FISIKOA_mugimendua(oztopoa6.pos);
+		oztopoa6= argazkiakMugiarazi(oztopoa6);
+		/*aux = ERREALITATE_FISIKOA_mugimendua(oztopoa6.pos);
 		oztopoa6.pos.y = aux.y;
-		irudiaMugitu(oztopoa6.id, oztopoa6.pos.x, oztopoa6.pos.y);
+		irudiaMugitu(oztopoa6.id, oztopoa6.pos.x, oztopoa6.pos.y);*/
 	}
 	if (kont < 8000 && kont>5000) {
-		aux = ERREALITATE_FISIKOA_mugimendua(desierto.pos);
+		desierto= argazkiakMugiarazi(desierto);
+		/*aux = ERREALITATE_FISIKOA_mugimendua(desierto.pos);
 		desierto.pos.y = aux.y;
-		irudiaMugitu(desierto.id, desierto.pos.x, desierto.pos.y);
+		irudiaMugitu(desierto.id, desierto.pos.x, desierto.pos.y);*/
 		if (desierto.pos.y > 0) {
 			irudiaMugitu(desierto.id, 0, 0);
 		}
 	}
 	if (kont > 8000){
-		aux = ERREALITATE_FISIKOA_mugimendua(cielo1.pos);
+		cielo1= argazkiakMugiarazi(cielo1);
+		/*aux = ERREALITATE_FISIKOA_mugimendua(cielo1.pos);
 		cielo1.pos.y = aux.y;
-		irudiaMugitu(cielo1.id, cielo1.pos.x, cielo1.pos.y);
-
-		aux = ERREALITATE_FISIKOA_mugimendua(cielo2.pos);
+		irudiaMugitu(cielo1.id, cielo1.pos.x, cielo1.pos.y);*/
+		cielo2= argazkiakMugiarazi(cielo2);
+		/*aux = ERREALITATE_FISIKOA_mugimendua(cielo2.pos);
 		cielo2.pos.y = aux.y;
-		irudiaMugitu(cielo2.id, cielo2.pos.x, cielo2.pos.y);
+		irudiaMugitu(cielo2.id, cielo2.pos.x, cielo2.pos.y);*/
 		if (cielo1.pos.y > 480) {
 			cielo1.pos.y = -480;
 		}
@@ -244,26 +252,30 @@ EGOERA jokatu(void)
 			cielo2.pos.y = -480;
 		}
 	}
-	
-	aux = ERREALITATE_FISIKOA_mugimendua(marrak1.pos);
+	marrak1= argazkiakMugiarazi(marrak1);
+	marrak2= argazkiakMugiarazi(marrak2);
+	txanpona= argazkiakMugiarazi(txanpona);
+	gasolina= argazkiakMugiarazi(gasolina);
+	energybull= argazkiakMugiarazi(energybull);
+	/*aux = ERREALITATE_FISIKOA_mugimendua(marrak1.pos);
 	marrak1.pos.y = aux.y;
-	irudiaMugitu(marrak1.id, marrak1.pos.x, marrak1.pos.y);
+	irudiaMugitu(marrak1.id, marrak1.pos.x, marrak1.pos.y);*/
 	
-	aux = ERREALITATE_FISIKOA_mugimendua(marrak2.pos);
+	/*aux = ERREALITATE_FISIKOA_mugimendua(marrak2.pos);
 	marrak2.pos.y = aux.y;
-	irudiaMugitu(marrak2.id, marrak2.pos.x, marrak2.pos.y);
+	irudiaMugitu(marrak2.id, marrak2.pos.x, marrak2.pos.y);*/
 	
-	aux = ERREALITATE_FISIKOA_mugimendua(txanpona.pos);
+	/*aux = ERREALITATE_FISIKOA_mugimendua(txanpona.pos);
 	txanpona.pos.y = aux.y;
-	irudiaMugitu(txanpona.id, txanpona.pos.x, txanpona.pos.y);
+	irudiaMugitu(txanpona.id, txanpona.pos.x, txanpona.pos.y);*/
 	
-	aux = ERREALITATE_FISIKOA_mugimendua(gasolina.pos);
+	/*aux = ERREALITATE_FISIKOA_mugimendua(gasolina.pos);
 	gasolina.pos.y = aux.y;
-	irudiaMugitu(gasolina.id, gasolina.pos.x, gasolina.pos.y);
+	irudiaMugitu(gasolina.id, gasolina.pos.x, gasolina.pos.y);*/
 
-	aux = ERREALITATE_FISIKOA_mugimendua(energybull.pos);
+	/*aux = ERREALITATE_FISIKOA_mugimendua(energybull.pos);
 	energybull.pos.y = aux.y;
-	irudiaMugitu(energybull.id, energybull.pos.x, energybull.pos.y);
+	irudiaMugitu(energybull.id, energybull.pos.x, energybull.pos.y);*/
 	
  	
 	
@@ -342,7 +354,7 @@ EGOERA jokatu(void)
 		bidea = aukeratuBidea();
 		txanpona.pos.x = 95 + bidea;
 	}
-	if (jokalaria.pos.x > txanpona.pos.x - 20 && jokalaria.pos.x <txanpona.pos.x + 20 && jokalaria.pos.y + 22 >txanpona.pos.y - 15 && jokalaria.pos.y - 22 < txanpona.pos.y + 15)
+	if (jokalaria.pos.x > txanpona.pos.x - 43 && jokalaria.pos.x <txanpona.pos.x + 33 && jokalaria.pos.y + 33 >txanpona.pos.y - 33 && jokalaria.pos.y - 33 < txanpona.pos.y + 33)
 	{
 		int idAudioGame;
 		idAudioGame = loadSound(TXANPON_SOINUA);
@@ -355,7 +367,7 @@ EGOERA jokatu(void)
 		txanponakScore++;
 	}
 
-	if (jokalaria.pos.x > gasolina.pos.x - 23 && jokalaria.pos.x < gasolina.pos.x + 23 && jokalaria.pos.y + 23 > gasolina.pos.y - 23 && jokalaria.pos.y - 16 < gasolina.pos.y + 23)
+	if (jokalaria.pos.x > gasolina.pos.x - 43 && jokalaria.pos.x < gasolina.pos.x + 33 && jokalaria.pos.y + 33 > gasolina.pos.y - 33 && jokalaria.pos.y - 33 < gasolina.pos.y + 33)
 	{
 		bigarrenKontagailua = 0;
 		kontagailuBateria = 1;
@@ -371,7 +383,7 @@ EGOERA jokatu(void)
 		bidea = aukeratuBidea();
 		gasolina.pos.x = 95 + bidea;
 	}
-	if (jokalaria.pos.x > energybull.pos.x - 23 && jokalaria.pos.x <energybull.pos.x + 23 && jokalaria.pos.y + 23 >energybull.pos.y - 23 && jokalaria.pos.y - 23 < energybull.pos.y + 23)
+	if (jokalaria.pos.x > energybull.pos.x - 43 && jokalaria.pos.x <energybull.pos.x + 33 && jokalaria.pos.y + 33 >energybull.pos.y - 33 && jokalaria.pos.y - 33 < energybull.pos.y + 33)
 	{
 		kontagailuEnergia++;
 		argazkiakAldatu(kontagailuEnergia);
@@ -461,8 +473,6 @@ EGOERA jokatu(void)
 		}
 		
 	}
-
-
 	if (energybull.pos.y > 480)
 	{
 		numero = zenbakiRandom();
@@ -471,7 +481,13 @@ EGOERA jokatu(void)
 		energybull.pos.x = 95 + bidea;
 
 	}
-    if (oztopoa.pos.y + 30 > 550) {
+	oztopoa = oztopoakAgertzeko(oztopoa);
+	oztopoa2 = oztopoakAgertzeko(oztopoa2);
+	oztopoa3 = oztopoakAgertzeko(oztopoa3);
+	oztopoa4 = oztopoakAgertzeko(oztopoa4);
+	oztopoa5 = oztopoakAgertzeko(oztopoa5);
+	oztopoa6= oztopoakAgertzeko(oztopoa6);
+    /*if (oztopoa.pos.y + 30 > 550) {
 		numero = zenbakiRandom();
 		oztopoa.pos.y = -100-numero;
 		bidea = aukeratuBidea();
@@ -482,10 +498,7 @@ EGOERA jokatu(void)
 		oztopoa2.pos.y = -100 - numero;
 		bidea = aukeratuBidea();
 		oztopoa2.pos.x = 85 + bidea;
-		/*konprobatuPosizioa(oztopoa2, oztopoa3);
-		konprobatuPosizioa(oztopoa2, oztopoa4);
-		konprobatuPosizioa(oztopoa2, oztopoa5);
-		konprobatuPosizioa(oztopoa2, oztopoa6);*/
+		
 
 	}
 	if (oztopoa3.pos.y + 30 > 550) {
@@ -493,9 +506,7 @@ EGOERA jokatu(void)
 		oztopoa3.pos.y = -100 - numero;
 		bidea = aukeratuBidea();
 		oztopoa3.pos.x = 85 + bidea;
-		//konprobatuPosizioa(oztopoa3, oztopoa4);
-		//konprobatuPosizioa(oztopoa3, oztopoa5);
-		//konprobatuPosizioa(oztopoa3, oztopoa6);
+		
 
 	}
 	if (oztopoa4.pos.y + 30 > 550) {
@@ -503,8 +514,7 @@ EGOERA jokatu(void)
 		oztopoa4.pos.y = -100 - numero;
 		bidea = aukeratuBidea();
 		oztopoa4.pos.x = 85 + bidea;
-		//konprobatuPosizioa(oztopoa4, oztopoa5);
-		//konprobatuPosizioa(oztopoa4, oztopoa6);
+		
 
 	}
 	if (oztopoa5.pos.y + 30 > 550) {
@@ -512,7 +522,7 @@ EGOERA jokatu(void)
 		oztopoa5.pos.y = - 100 - numero;
 		bidea = aukeratuBidea();
 		oztopoa5.pos.x = 85 + bidea;
-		//konprobatuPosizioa(oztopoa5, oztopoa6);
+		
 
 	}
 	if (oztopoa6.pos.y + 30 > 550) {
@@ -521,7 +531,7 @@ EGOERA jokatu(void)
 		bidea = aukeratuBidea();
 		oztopoa6.pos.x = 85 + bidea;
 
-	}
+	}*/
 	if (bigarrenKontagailua==0) {
 		bateriaArgazkiaAldatu(kontagailuBateria);
 	}
@@ -585,20 +595,24 @@ EGOERA jokatu(void)
 	{
 		egoera = JOKOA_egoera(jokalaria, oztopoa6, bateria, bizitzakAldatu);
 	}
+
+	if (ebentu == TECLA_ESCAPE)
+	{
+		//jokoaAurkeztu();
+		sarreraArgazkiaAplikatu(PAUSA_JARRAITU);
+		pausaMenua();
+	}
 		
-		sprintf(buffer, "%d", txanponakScore);
+		/*sprintf(buffer, "%d", txanponakScore);
 		textuaIdatzi(574, 200, buffer);
 		sprintf(buffer, "%d", jokalaria.pos.x);
 		textuaIdatzi(574, 150, buffer);
 		sprintf(buffer, "%d", jokalaria.pos.y);
-		textuaIdatzi(574, 130, buffer);
+		textuaIdatzi(574, 130, buffer);*/
 		pantailaBerriztu();
-  } while (egoera == JOLASTEN && ebentu !=TECLA_ESCAPE);
+  } while (egoera == JOLASTEN);
     /*******************************LOOP FINISIHED*****************/
-  if (ebentu == TECLA_ESCAPE)
-	{
-		jokoaAurkeztu();
-	}
+  
 	
  
   irudiaKendu(jokalaria.id);
@@ -625,15 +639,35 @@ EGOERA JOKOA_egoera(JOKO_ELEMENTUA jokalaria, JOKO_ELEMENTUA oztopoa, int bateri
   }
   return ret;
 }
+//////////////FUNTZIO SINPLEAK///////////////////
 
+JOKO_ELEMENTUA oztopoakAgertzeko(JOKO_ELEMENTUA oztopoa)
+{
+	int numero = 0, bidea = 0;
+
+	if (oztopoa.pos.y + 30 > 550) {
+		numero = zenbakiRandom();
+		oztopoa.pos.y = -100 - numero;
+		bidea = aukeratuBidea();
+		oztopoa.pos.x = 85 + bidea;
+	}
+	return oztopoa;
+}
+
+JOKO_ELEMENTUA argazkiakMugiarazi(JOKO_ELEMENTUA oztopoa)
+{
+	POSIZIOA aux;
+	aux = ERREALITATE_FISIKOA_mugimendua(oztopoa.pos);
+	oztopoa.pos.y = aux.y;
+	irudiaMugitu(oztopoa.id, oztopoa.pos.x, oztopoa.pos.y);
+	return oztopoa;
+}
+////////////////////////////////////////////////////
 
 int JOKOAREN_argazkiakGehitu(char * argazkia)
 {
 	int jokalariaId = -1;
 	jokalariaId = irudiaKargatu(argazkia);
-	//pantailaGarbitu();
-	//irudiakMarraztu();
-	//pantailaBerriztu();
 	return jokalariaId;
 }
 
@@ -763,4 +797,52 @@ int BUKAERA_irudiaBistaratu() {
   irudiakMarraztu();
   pantailaBerriztu();
   return id;
+}
+
+void pausaMenua(void)
+{
+	int ebentu = 0, menuAukerak = 1;
+	//menulanguntza.id = JOKOAREN_argazkiakGehitu(MENULAGUNTZA_IMAGE);
+	do
+	{
+		ebentu = ebentuaJasoGertatuBada();
+		if (ebentu == TECLA_DOWN && menuAukerak != 0) {
+			menuAukerak--;
+			aukerakAldatu(menuAukerak);
+		}
+		if (ebentu == TECLA_UP && menuAukerak != 1) {
+			menuAukerak++;
+			aukerakAldatu(menuAukerak);
+		}
+	} while (ebentu != TECLA_RETURN);
+	if (menuAukerak != 1)
+		jokoaAurkeztu();
+		//aukeraExekutatu(menuAukerak);
+	pantailaGarbitu();
+	pantailaBerriztu();
+}
+void aukerakAldatu(menuAukerak)
+{
+	if (menuAukerak >= 1) { menuAukerak = 1; }
+	if (menuAukerak < 1) { menuAukerak = 0; }
+	if (menuAukerak == 0) {
+		sarreraArgazkiaAplikatu(PAUSA_ATERA);
+	}
+	if (menuAukerak == 1) {
+		sarreraArgazkiaAplikatu(PAUSA_JARRAITU);
+	}
+}
+void aukeraExekutatu(menuAukerak)
+{
+	int ebentu = 0;
+
+	if (menuAukerak == 1)
+	{
+		//goto line 69;
+		jokatu();
+	}
+	else if (menuAukerak == 0)
+	{
+		jokoaAurkeztu();
+	}
 }

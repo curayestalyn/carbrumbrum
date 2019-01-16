@@ -20,8 +20,8 @@
 
 
 int main(int argc, char * str[]) {
-  //int jarraitu = 0;
-  //EGOERA egoera;
+  int jarraitu = 0;
+  EGOERA egoera;
  
   if (sgHasieratu() == -1) 
   {
@@ -29,15 +29,15 @@ int main(int argc, char * str[]) {
     return 1;
   }
   textuaGaitu();
-  jokoaAurkeztu();
-  /*
+  //jokoaAurkeztu();
+  
   do
   {
     jokoaAurkeztu();
     egoera = jokatu();
     jarraitu = jokoAmaierakoa(egoera);
   } while (jarraitu);
-  */
+  
   sgItxi();
   return 0;
 }

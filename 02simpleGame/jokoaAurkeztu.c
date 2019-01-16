@@ -30,11 +30,11 @@ void jokoaAurkeztu(void)
 	do
 	{
 		ebentu = ebentuaJasoGertatuBada();
-		if (ebentu == TECLA_DOWN) {
+		if (ebentu == TECLA_DOWN && menuAukerak!=2) {
 			menuAukerak--;
 			argazkiaAldatu(menuAukerak);
 		}
-		if (ebentu == TECLA_UP) {
+		if (ebentu == TECLA_UP && menuAukerak != 4) {
 			menuAukerak++;
 			argazkiaAldatu(menuAukerak);
 		}
@@ -58,17 +58,15 @@ void zeinPantailaAukeratu(menuAukerak) {
 	}
 	else if (menuAukerak == 2)
 	{
-		int kont = 0;
-		kont++;
-		while (ebentu != TECLA_ESCAPE)
-		{
-			if (kont == 1) {
-				irudiaKargatu(MENULAGUNTZA_IMAGE);
-			}
-			kont++;
-		}
-		//sarreraArgazkiaAplikatu(STARTMENU_IMAGE);
+		sarreraArgazkiaAplikatu(MENULAGUNTZA_IMAGE);
+		
+		do
+		{	
+			ebentu = ebentuaJasoGertatuBada();
+		} while (ebentu != TECLA_ESCAPE);
+		
 		jokoaAurkeztu();
+
 	}
 }
 
