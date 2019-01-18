@@ -19,14 +19,11 @@
     <Filter Include="Header Files\simpleSdlWrapper">
       <UniqueIdentifier>{e313185e-6943-4380-932a-4b6612d3ff10}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\path">
+      <UniqueIdentifier>{fb245572-2b6c-4571-aae9-2cdcba36811b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="02simpleGameMain.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="game02\game02.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\simpleSdlWrapper\ebentoak.c">
       <Filter>Source Files\simpleSdlWrapper</Filter>
     </ClCompile>
@@ -42,7 +39,13 @@
     <ClCompile Include="..\simpleSdlWrapper\text.c">
       <Filter>Source Files\simpleSdlWrapper</Filter>
     </ClCompile>
-    <ClCompile Include="jokoaAurkeztu.c">
+    <ClCompile Include="menu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game02\cargame.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,10 +68,16 @@
     <ClInclude Include="OurTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="game02\game02.h">
+    <ClInclude Include="menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="jokoaAurkeztu.h">
+    <ClInclude Include="imgpath.h">
+      <Filter>Header Files\path</Filter>
+    </ClInclude>
+    <ClInclude Include="soundpath.h">
+      <Filter>Header Files\path</Filter>
+    </ClInclude>
+    <ClInclude Include="game02\cargame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
