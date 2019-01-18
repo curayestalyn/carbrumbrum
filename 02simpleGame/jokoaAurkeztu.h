@@ -8,13 +8,14 @@
 #define ONGI_ETORRI_MEZUA "PRESS RETURN TO START THE GAME"
 #define MENU_SOINUA ".\\sound\\ispace.wav"
 #define MENULAGUNTZA_IMAGE ".\\img\\menu\\menulaguntza.bmp"
+////Pausa menua.
 #define PAUSA_JARRAITU ".\\img\\menu\\jarraitu.bmp"
 #define PAUSA_ATERA ".\\img\\menu\\pausa.bmp"
 
-void jokoaAurkeztu(void);
+int jokoaAurkeztu();
+void laguntzaMenua();
 void sarreraMezuaIdatzi();
 void sarreraArgazkiaAplikatu(argazkia);
 void argazkiaAldatu(menuAukerak);
-void zeinPantailaAukeratu(menuAukerak);
 
 #endif

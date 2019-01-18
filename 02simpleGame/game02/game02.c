@@ -47,11 +47,9 @@
 #define TXANPON_SOINUA ".\\sound\\pickingupcoins.wav"
 #define REDBULL_SOINUA ".\\sound\\redbull.wav"
 #define BIZITZA_SOINUA ".\\sound\\losinghearts.wav"
-//int JOKOAREN_argazkiakGehitu(argazkia);
+
 POSIZIOA ERREALITATE_FISIKOA_mugimendua(POSIZIOA posizioa);
 EGOERA JOKOA_egoera(JOKO_ELEMENTUA jokalaria, JOKO_ELEMENTUA oztopoa, int bateria, int bizitzakAldatu);
-
-
 
 /**************************JOKOAREN INTERAKZIOA**********************************/
 //JOKOA_ELEMENTUA [elementu] Jokoaren POSIZIOA pos.[x,y] 
@@ -66,7 +64,7 @@ EGOERA jokatu(void)
   
   //int ebentu = 0, bidea = 0, numero = 0, kontagailu = 0, kont = 0, bigarrenKontagailua = 0, bateria = 0, bizitzakAldatu = 0, kontCarCrashes = 0, txanponakScore = 0, kontagailuEnergia = 1, kontagailuBateria = 1, denbora = 2;
   
-  int ebentu = 0;
+  int ebentu = 0, aukera = 2;
   int kontagailuEnergia= 1, kontagailuBateria = 1, bateria = 0, bizitzakAldatu = 0, kontCarCrashes = 0;
   int bidea = 0, numero = 0, denbora = 1, kontagailu = 0, bigarrenKontagailua = 0, kont = 0;
   int txanponakScore = 0;
@@ -139,9 +137,11 @@ EGOERA jokatu(void)
 
   desierto.pos.x = 0;
   desierto.pos.y = -480;
+
   audioInit();
   loadTheMusic(JOKOA_SOUND);
   playMusic();
+
   background.id = JOKOAREN_argazkiakGehitu(BACKGROUND_IMAGE);
   desierto.id = JOKOAREN_argazkiakGehitu(DESIERTO_IMAGE);
   cielo1.id = JOKOAREN_argazkiakGehitu(CIELO1_IMAGE);
@@ -184,67 +184,42 @@ EGOERA jokatu(void)
 	pantailaGarbitu();
 	/*******************OZTOPOAK*******************/
 	oztopoa = argazkiakMugiarazi(oztopoa);
-	/*aux = ERREALITATE_FISIKOA_mugimendua(oztopoa.pos);
-	oztopoa.pos.y = aux.y;
-	irudiaMugitu(oztopoa.id, oztopoa.pos.x, oztopoa.pos.y);*/
 	
 	if (kont > 1000)
 	{
 		oztopoa2= argazkiakMugiarazi(oztopoa2);
-		/*aux = ERREALITATE_FISIKOA_mugimendua(oztopoa2.pos);
-		oztopoa2.pos.y = aux.y;
-		irudiaMugitu(oztopoa2.id, oztopoa2.pos.x, oztopoa2.pos.y);*/
 	}
 
 	if (kont > 2000)
 	{
 		oztopoa3 = argazkiakMugiarazi(oztopoa3);
-		/*aux = ERREALITATE_FISIKOA_mugimendua(oztopoa3.pos);
-		oztopoa3.pos.y = aux.y;
-		irudiaMugitu(oztopoa3.id, oztopoa3.pos.x, oztopoa3.pos.y);*/
 	}
 
 	if (kont > 3000)
 	{
 		oztopoa4= argazkiakMugiarazi(oztopoa4);
-		/*aux = ERREALITATE_FISIKOA_mugimendua(oztopoa4.pos);
-		oztopoa4.pos.y = aux.y;
-		irudiaMugitu(oztopoa4.id, oztopoa4.pos.x, oztopoa4.pos.y);*/
 	}
 
 	if (kont > 4000)
 	{
 		oztopoa5= argazkiakMugiarazi(oztopoa5);
-		/*aux = ERREALITATE_FISIKOA_mugimendua(oztopoa5.pos);
-		oztopoa5.pos.y = aux.y;
-		irudiaMugitu(oztopoa5.id, oztopoa5.pos.x, oztopoa5.pos.y);*/
 	}
 
 	if (kont > 50000)
 	{
 		oztopoa6= argazkiakMugiarazi(oztopoa6);
-		/*aux = ERREALITATE_FISIKOA_mugimendua(oztopoa6.pos);
-		oztopoa6.pos.y = aux.y;
-		irudiaMugitu(oztopoa6.id, oztopoa6.pos.x, oztopoa6.pos.y);*/
 	}
 	if (kont < 8000 && kont>5000) {
 		desierto= argazkiakMugiarazi(desierto);
-		/*aux = ERREALITATE_FISIKOA_mugimendua(desierto.pos);
-		desierto.pos.y = aux.y;
-		irudiaMugitu(desierto.id, desierto.pos.x, desierto.pos.y);*/
+
 		if (desierto.pos.y > 0) {
 			irudiaMugitu(desierto.id, 0, 0);
 		}
 	}
 	if (kont > 8000){
 		cielo1= argazkiakMugiarazi(cielo1);
-		/*aux = ERREALITATE_FISIKOA_mugimendua(cielo1.pos);
-		cielo1.pos.y = aux.y;
-		irudiaMugitu(cielo1.id, cielo1.pos.x, cielo1.pos.y);*/
 		cielo2= argazkiakMugiarazi(cielo2);
-		/*aux = ERREALITATE_FISIKOA_mugimendua(cielo2.pos);
-		cielo2.pos.y = aux.y;
-		irudiaMugitu(cielo2.id, cielo2.pos.x, cielo2.pos.y);*/
+
 		if (cielo1.pos.y > 480) {
 			cielo1.pos.y = -480;
 		}
@@ -257,28 +232,7 @@ EGOERA jokatu(void)
 	txanpona= argazkiakMugiarazi(txanpona);
 	gasolina= argazkiakMugiarazi(gasolina);
 	energybull= argazkiakMugiarazi(energybull);
-	/*aux = ERREALITATE_FISIKOA_mugimendua(marrak1.pos);
-	marrak1.pos.y = aux.y;
-	irudiaMugitu(marrak1.id, marrak1.pos.x, marrak1.pos.y);*/
-	
-	/*aux = ERREALITATE_FISIKOA_mugimendua(marrak2.pos);
-	marrak2.pos.y = aux.y;
-	irudiaMugitu(marrak2.id, marrak2.pos.x, marrak2.pos.y);*/
-	
-	/*aux = ERREALITATE_FISIKOA_mugimendua(txanpona.pos);
-	txanpona.pos.y = aux.y;
-	irudiaMugitu(txanpona.id, txanpona.pos.x, txanpona.pos.y);*/
-	
-	/*aux = ERREALITATE_FISIKOA_mugimendua(gasolina.pos);
-	gasolina.pos.y = aux.y;
-	irudiaMugitu(gasolina.id, gasolina.pos.x, gasolina.pos.y);*/
 
-	/*aux = ERREALITATE_FISIKOA_mugimendua(energybull.pos);
-	energybull.pos.y = aux.y;
-	irudiaMugitu(energybull.id, energybull.pos.x, energybull.pos.y);*/
-	
- 	
-	
 	irudiaMugitu(deposito1.id, deposito1.pos.x, deposito1.pos.y);
 	irudiaMugitu(deposito2.id, deposito1.pos.x, deposito1.pos.y);
 	irudiaMugitu(deposito3.id, deposito1.pos.x, deposito1.pos.y);
@@ -487,51 +441,7 @@ EGOERA jokatu(void)
 	oztopoa4 = oztopoakAgertzeko(oztopoa4);
 	oztopoa5 = oztopoakAgertzeko(oztopoa5);
 	oztopoa6= oztopoakAgertzeko(oztopoa6);
-    /*if (oztopoa.pos.y + 30 > 550) {
-		numero = zenbakiRandom();
-		oztopoa.pos.y = -100-numero;
-		bidea = aukeratuBidea();
-		oztopoa.pos.x = 85 + bidea;
-    }
-	if (oztopoa2.pos.y + 30 > 550) {
-		numero = zenbakiRandom();
-		oztopoa2.pos.y = -100 - numero;
-		bidea = aukeratuBidea();
-		oztopoa2.pos.x = 85 + bidea;
-		
 
-	}
-	if (oztopoa3.pos.y + 30 > 550) {
-		numero = zenbakiRandom();
-		oztopoa3.pos.y = -100 - numero;
-		bidea = aukeratuBidea();
-		oztopoa3.pos.x = 85 + bidea;
-		
-
-	}
-	if (oztopoa4.pos.y + 30 > 550) {
-		numero = zenbakiRandom();
-		oztopoa4.pos.y = -100 - numero;
-		bidea = aukeratuBidea();
-		oztopoa4.pos.x = 85 + bidea;
-		
-
-	}
-	if (oztopoa5.pos.y + 30 > 550) {
-		numero = zenbakiRandom();
-		oztopoa5.pos.y = - 100 - numero;
-		bidea = aukeratuBidea();
-		oztopoa5.pos.x = 85 + bidea;
-		
-
-	}
-	if (oztopoa6.pos.y + 30 > 550) {
-		numero = zenbakiRandom();
-		oztopoa6.pos.y = - 100 - numero;
-		bidea = aukeratuBidea();
-		oztopoa6.pos.x = 85 + bidea;
-
-	}*/
 	if (bigarrenKontagailua==0) {
 		bateriaArgazkiaAldatu(kontagailuBateria);
 	}
@@ -600,7 +510,17 @@ EGOERA jokatu(void)
 	{
 		//jokoaAurkeztu();
 		sarreraArgazkiaAplikatu(PAUSA_JARRAITU);
-		pausaMenua();
+		aukera = pausaMenua();
+
+		if (aukera == 0) //Menura itzultzeko
+		{
+			egoera = 5;
+			break;
+		}
+		else if (aukera == 1) //Jokoa jarraitzeko
+		{
+			egoera = JOLASTEN;
+		}
 	}
 		
 		/*sprintf(buffer, "%d", txanponakScore);
@@ -609,12 +529,11 @@ EGOERA jokatu(void)
 		textuaIdatzi(574, 150, buffer);
 		sprintf(buffer, "%d", jokalaria.pos.y);
 		textuaIdatzi(574, 130, buffer);*/
-		pantailaBerriztu();
+	
+	pantailaBerriztu();
   } while (egoera == JOLASTEN);
     /*******************************LOOP FINISIHED*****************/
-  
-	
- 
+
   irudiaKendu(jokalaria.id);
   toggleMusic();
   audioTerminate();
@@ -681,13 +600,11 @@ int  jokoAmaierakoa(EGOERA egoera)
 {
   int ebentu = 0, id;
   int idAudioGame;
+  int balioa = 0;
 
   loadTheMusic(BUKAERA_SOUND_1);
-  if (egoera == IRABAZI) {
-    idAudioGame = loadSound(JOKOA_SOUND_WIN);
-    playSound(idAudioGame);
-  }
-  else {
+
+  if(egoera == GALDU){
     idAudioGame = loadSound(JOKOA_SOUND_LOOSE);
     playSound(idAudioGame);
   }
@@ -697,12 +614,12 @@ int  jokoAmaierakoa(EGOERA egoera)
     ebentu = ebentuaJasoGertatuBada();
 	if (ebentu == TECLA_ESCAPE)
 	{
-		jokoaAurkeztu();
+		balioa = 1;
 	}
-  } while ((ebentu!= TECLA_RETURN) && (ebentu!= SAGU_BOTOIA_ESKUMA));
+  } while (ebentu!= TECLA_ESCAPE);
   audioTerminate();
   irudiaKendu(id);
-  return (ebentu != TECLA_RETURN) ? 1 : 0;
+  return balioa;// ? 1 : 0;
 }
 
 void argazkiakAldatu(kontagailuEnergia)
@@ -799,10 +716,10 @@ int BUKAERA_irudiaBistaratu() {
   return id;
 }
 
-void pausaMenua(void)
+int pausaMenua()
 {
 	int ebentu = 0, menuAukerak = 1;
-	//menulanguntza.id = JOKOAREN_argazkiakGehitu(MENULAGUNTZA_IMAGE);
+	
 	do
 	{
 		ebentu = ebentuaJasoGertatuBada();
@@ -815,11 +732,7 @@ void pausaMenua(void)
 			aukerakAldatu(menuAukerak);
 		}
 	} while (ebentu != TECLA_RETURN);
-	if (menuAukerak != 1)
-		jokoaAurkeztu();
-		//aukeraExekutatu(menuAukerak);
-	pantailaGarbitu();
-	pantailaBerriztu();
+	return menuAukerak;
 }
 void aukerakAldatu(menuAukerak)
 {
@@ -830,19 +743,5 @@ void aukerakAldatu(menuAukerak)
 	}
 	if (menuAukerak == 1) {
 		sarreraArgazkiaAplikatu(PAUSA_JARRAITU);
-	}
-}
-void aukeraExekutatu(menuAukerak)
-{
-	int ebentu = 0;
-
-	if (menuAukerak == 1)
-	{
-		//goto line 69;
-		jokatu();
-	}
-	else if (menuAukerak == 0)
-	{
-		jokoaAurkeztu();
 	}
 }

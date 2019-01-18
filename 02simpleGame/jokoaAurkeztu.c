@@ -17,9 +17,9 @@
 #define MENU_SOINUA ".\\sound\\ispace.wav"
 #define MENULAGUNTZA_IMAGE ".\\img\\menu\\menulaguntza.bmp"
 
-void jokoaAurkeztu(void)
+int jokoaAurkeztu()
 {
-	int ebentu = 0, menuAukerak = 4;
+	int ebentu = 0, menuAukerak = 4, balioa=0;
 	//menulanguntza.id = JOKOAREN_argazkiakGehitu(MENULAGUNTZA_IMAGE);
 
 	audioInit();
@@ -39,35 +39,18 @@ void jokoaAurkeztu(void)
 			argazkiaAldatu(menuAukerak);
 		}
 	} while (ebentu != TECLA_RETURN);
-	zeinPantailaAukeratu(menuAukerak);
-	pantailaGarbitu();
-	pantailaBerriztu();
+
+	return menuAukerak;
 }
 
-void zeinPantailaAukeratu(menuAukerak) {
-	EGOERA egoera;
+void laguntzaMenua()
+{
 	int ebentu = 0;
-	int jarraitu = 0;
-	ebentu = ebentuaJasoGertatuBada();
-	if (menuAukerak == 4) {
-		do
-		{
-			egoera = jokatu();
-			jarraitu = jokoAmaierakoa(egoera);
-		} while (jarraitu);
-	}
-	else if (menuAukerak == 2)
+	sarreraArgazkiaAplikatu(MENULAGUNTZA_IMAGE);
+	do
 	{
-		sarreraArgazkiaAplikatu(MENULAGUNTZA_IMAGE);
-		
-		do
-		{	
-			ebentu = ebentuaJasoGertatuBada();
-		} while (ebentu != TECLA_ESCAPE);
-		
-		jokoaAurkeztu();
-
-	}
+		ebentu = ebentuaJasoGertatuBada();
+	} while (ebentu != TECLA_ESCAPE);
 }
 
 void sarreraMezuaIdatzi()

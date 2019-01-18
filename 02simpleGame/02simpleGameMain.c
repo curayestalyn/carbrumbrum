@@ -20,7 +20,7 @@
 
 
 int main(int argc, char * str[]) {
-  int jarraitu = 0;
+  int jarraitu = 1, balioa=0;
   EGOERA egoera;
  
   if (sgHasieratu() == -1) 
@@ -33,9 +33,25 @@ int main(int argc, char * str[]) {
   
   do
   {
-    jokoaAurkeztu();
-    egoera = jokatu();
-    jarraitu = jokoAmaierakoa(egoera);
+    balioa = jokoaAurkeztu();
+	if (balioa == 3)
+	{
+		break;
+	}
+	else if (balioa == 2)
+	{
+		laguntzaMenua();
+	}
+	else if (balioa == 4)
+	{
+		egoera = jokatu();
+		if (egoera != 5)
+		{
+			jarraitu = jokoAmaierakoa(egoera);
+		}
+		
+	}
+
   } while (jarraitu);
   
   sgItxi();
