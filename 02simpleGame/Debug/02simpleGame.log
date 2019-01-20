@@ -1,5 +1,12 @@
-﻿  02simpleGameMain.c
-  game02.c
-  jokoaAurkeztu.c
-  Generando código...
-  02simpleGame.vcxproj -> D:\MondragonUnibertsitatea\POPBL\NUESTRO PROYECTO\carbrumbrum\Debug\02simpleGame.exe
+﻿  ebentoak.c
+  graphics.c
+  imagen.c
+  soinua.c
+  text.c
+  funcargame.c
+  funmenu.c
+  main.c
+  cargame.c
+  menu.c
+  Generating Code...
+  02simpleGame.vcxproj -> Z:\IKASGAIAK\1POPBL\carbrumbrum\carbrmu_v1\Debug\02simpleGame.exe
