@@ -422,29 +422,35 @@ EGOERA jokatu(void)
 
 	if (ebentu == TECLA_ESCAPE)
 	{
-		int id;
-		id=pausaArgazkiakAplikatu(PAUSA_JARRAITU);
-
+		int pausaArgazkiaId;
+		int idAudioGame;
+		audioTerminate();
+		pausaArgazkiaId = pausaArgazkiakAplikatu(PAUSA_JARRAITU);
+		idAudioGame = loadSound(PAUSAON_SOINUA);
+		playSound(idAudioGame);
 		aukera = pausaMenua();
-
 		if (aukera == 0) //Menura itzultzeko
 		{
 			egoera = 5;
 			break;
 		}
+		
 		else if (aukera == 1) //Jokoa jarraitzeko
 		{
 			egoera = JOLASTEN;
-			irudiaKendu(id);
-		}
+			irudiaKendu(pausaArgazkiaId);
 
+			audioInit();
+			loadTheMusic(JOKOA_SOUND);
+			playMusic();
+		}
 	}
 	sprintf(txanponakBistaratu, "%d", txanponakScore);
 	textuaIdatzi(574, 200, txanponakBistaratu);
 	pantailaBerriztu();
   } while (egoera == JOLASTEN);
 
-    /*******************************LOOP FINISIHED*****************/
+    /*******************************LOOP FINISIHED*****************/ 
 
   irudiaKendu(jokalaria.id);
   toggleMusic();

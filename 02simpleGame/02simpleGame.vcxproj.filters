@@ -42,9 +42,6 @@
     <ClCompile Include="menu.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="funmenu.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="funcargame.c">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -151,7 +151,6 @@
     <ClCompile Include="..\simpleSdlWrapper\soinua.c" />
     <ClCompile Include="..\simpleSdlWrapper\text.c" />
     <ClCompile Include="funcargame.c" />
-    <ClCompile Include="funmenu.c" />
     <ClCompile Include="game02\cargame.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="menu.c" />
