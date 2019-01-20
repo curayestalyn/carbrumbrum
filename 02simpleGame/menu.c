@@ -12,7 +12,6 @@
 #include "soundpath.h"
 #include "menu.h"
 
-/*******Menu aukerak funmenu.c ikusten dira*******/
 int jokoaAurkeztu()
 {
 	int ebentu = 0, menuAukerak = 4, balioa = 0;
@@ -37,7 +36,6 @@ int jokoaAurkeztu()
 
 	return menuAukerak;
 }
-
 
 void laguntzaMenua()
 {
