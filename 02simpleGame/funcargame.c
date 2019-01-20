@@ -29,7 +29,7 @@ int aukerakAldatu(menuAukerak)
 
 int pausaArgazkiakAplikatu(char *argazkia)
 {
-	int id = 1;
+	int id;
 	id = irudiaKargatu(argazkia);
 	irudiaMugitu(id, 0, 0);
 	irudiakMarraztu();

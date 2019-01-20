@@ -36,7 +36,7 @@ int main(int argc, char * str[])
 		else if (balioa == 4)
 		{
 			egoera = jokatu();
-			if (egoera != 5)
+		if (egoera != 5)
 			{
 				jarraitu = jokoAmaierakoa(egoera);
 			}

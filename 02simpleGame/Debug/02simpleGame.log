@@ -1,12 +1,2 @@
-﻿  ebentoak.c
-  graphics.c
-  imagen.c
-  soinua.c
-  text.c
-  funcargame.c
-  funmenu.c
-  cargame.c
-  main.c
-  menu.c
-  Generating Code...
+﻿  funcargame.c
   02simpleGame.vcxproj -> Z:\IKASGAIAK\1POPBL\carbrumbrum\carbrmu_v1\Debug\02simpleGame.exe

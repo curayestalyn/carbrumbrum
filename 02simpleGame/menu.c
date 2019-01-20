@@ -12,7 +12,7 @@
 #include "soundpath.h"
 #include "menu.h"
 
-/*******Menu aukerak funmenu.c ikusten da*******/
+/*******Menu aukerak funmenu.c ikusten dira*******/
 int jokoaAurkeztu()
 {
 	int ebentu = 0, menuAukerak = 4, balioa = 0;
