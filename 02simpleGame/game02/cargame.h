@@ -29,4 +29,5 @@ int pausaArgazkiakAplikatu(char *argazkia);
 /********Oztopoak ez ezkutazeko*******/
 int konprobatuPosizioa(JOKO_ELEMENTUA elementua1, JOKO_ELEMENTUA elementua2);
 JOKO_ELEMENTUA oztopoakMugitzeko(JOKO_ELEMENTUA oztopoa);
+
 #endif

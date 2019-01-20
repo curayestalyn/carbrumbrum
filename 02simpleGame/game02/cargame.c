@@ -27,7 +27,7 @@ EGOERA jokatu(void)
 	int aukera = 2;
 	char txanponakBistaratu[50];
   
-	JOKO_ELEMENTUA cielo1, cielo2, desierto, oztopoa, oztopoa2, oztopoa3, oztopoa4, oztopoa5, oztopoa6, jokalaria, gasolina, background, marrak1, marrak2, txanpona, energybull, deposito1, deposito2, deposito3, deposito4, bizitzak1, bizitzak2, bizitzak3, bateria1, bateria2, bateria3, bateria4, bateria5,pausa;
+	JOKO_ELEMENTUA cielo1, cielo2, desierto, oztopoa, oztopoa2, oztopoa3, oztopoa4, oztopoa5, oztopoa6, jokalaria, gasolina, background, marrak1, marrak2, txanpona, energybull, deposito1, deposito2, deposito3, deposito4, bizitzak1, bizitzak2, bizitzak3, bateria1, bateria2, bateria3, bateria4, bateria5;
 	POSIZIOA aux; 
 	/*******Eszenaren hasierako posizioa*******/
 	background.pos.x = 0;
@@ -42,8 +42,6 @@ EGOERA jokatu(void)
 	cielo2.pos.y = -960;
 	desierto.pos.x = 0;
 	desierto.pos.y = -480;
-	pausa.pos.x = 0;
-	pausa.pos.y = 0;
 	/*******Jokalarien hasierako posizioa*******/
 	jokalaria.pos.x = 340;
 	jokalaria.pos.y = 340;
@@ -296,6 +294,10 @@ EGOERA jokatu(void)
 			kontCarCrashes++;
 			if (kontCarCrashes == 0)
 			{
+				int idAudioGame;
+				idAudioGame = loadSound(BIZITZA_SOINUA);
+				playSound(idAudioGame);
+
 				bizitzakAldatu = 0;
 				bidea = rand() % 1000;
 				oztopoa.pos.y = -200 - bidea;
@@ -316,6 +318,7 @@ EGOERA jokatu(void)
 			}
 			else if (kontCarCrashes == 1)
 			{
+				int idAudioGame;
 				idAudioGame = loadSound(BIZITZA_SOINUA);
 				playSound(idAudioGame);
 
@@ -601,13 +604,11 @@ EGOERA jokatu(void)
 
 		if (ebentu == TECLA_ESCAPE)
 		{
-			audioTerminate();
+			audioInit();
+			loadTheMusic(MENU_SOINUA);
+			playMusic();
 			int pausaArgazkiaId;
-			int idAudioGame;
-			pausaArgazkiaId =pausaArgazkiakAplikatu(PAUSA_JARRAITU);
-		
-			idAudioGame = loadSound(PAUSAON_SOINUA);
-			playSound(idAudioGame);
+			pausaArgazkiaId = pausaArgazkiakAplikatu(PAUSA_JARRAITU);
 			aukera = pausaMenua();
 			if (aukera == 0) 
 			{
