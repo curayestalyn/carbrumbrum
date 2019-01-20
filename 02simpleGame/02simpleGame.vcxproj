@@ -150,10 +150,10 @@
     <ClCompile Include="..\simpleSdlWrapper\imagen.c" />
     <ClCompile Include="..\simpleSdlWrapper\soinua.c" />
     <ClCompile Include="..\simpleSdlWrapper\text.c" />
+    <ClCompile Include="cargame.c" />
     <ClCompile Include="funcargame.c" />
     <ClCompile Include="funmenu.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="game02\cargame.c" />
     <ClCompile Include="menu.c" />
   </ItemGroup>
   <ItemGroup>
@@ -162,7 +162,7 @@
     <ClInclude Include="..\simpleSdlWrapper\imagen.h" />
     <ClInclude Include="..\simpleSdlWrapper\soinua.h" />
     <ClInclude Include="..\simpleSdlWrapper\text.h" />
-    <ClInclude Include="game02\cargame.h" />
+    <ClInclude Include="cargame.h" />
     <ClInclude Include="imgpath.h" />
     <ClInclude Include="menu.h" />
     <ClInclude Include="OurTypes.h" />

@@ -3,10 +3,10 @@
   imagen.c
   soinua.c
   text.c
+  cargame.c
   funcargame.c
   funmenu.c
   main.c
-  cargame.c
   menu.c
   Generating Code...
   02simpleGame.vcxproj -> Z:\IKASGAIAK\1POPBL\carbrumbrum\carbrmu_v1\Debug\02simpleGame.exe
