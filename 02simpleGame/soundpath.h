@@ -15,4 +15,3 @@
 /****************Pausa menuaren soinua**********************/
 #define PAUSAON_SOINUA ".\\sound\\pausaon.wav"
 #endif // !SOUNDPATH_H
-

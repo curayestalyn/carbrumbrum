@@ -1,29 +1,46 @@
-#ifndef CARGAME_H
-#define CARGAME_H
+#ifndef GAME10_H
+#define GAME10_H
 
 #include "ourTypes.h"
-int jokoaAurkeztu();
-EGOERA JOKOA_egoera(JOKO_ELEMENTUA jokalaria, int bateria, int bizitzakAldatu);
+
+int BUKAERA_irudiaBistaratu();
+void ArgazkiaAplikatu(char *argazkia);
+<<<<<<< HEAD:02simpleGame/game02/game02.h
+int JOKOAREN_argazkiakGehitu(char * argazkia);
 JOKO_ELEMENTUA oztopoakAgertzeko(JOKO_ELEMENTUA oztopoa);
 JOKO_ELEMENTUA argazkiakMugiarazi(JOKO_ELEMENTUA oztopoa);
-POSIZIOA ERREALITATE_FISIKOA_mugimendua(POSIZIOA posizioa);
-EGOERA jokatu(void);
-int JOKOAREN_argazkiakGehitu(char * argazkia);
-/*******Oztopoak eta elementuak gurdibideetan ausaz agertzeko*******/
 int aukeratuBidea();
 int zenbakiRandom();
+////¿¿¿¿????////
+void carCrashes(kontCarCrashes);
+int bizitzakAldatu(kontBizitzakGaldu);
 
-/*******Depositoak aldatzeko*******/
+////Depositoak aldatzeko////
+void argazkiakAldatu(kontEnergia);
 void bateriaArgazkiaAplikatu(char *argazkia);
 void ArgazkiaAplikatu(char *argazkia); //EnergyBull-ena
-void bateriaArgazkiaAldatu(kontagailuBateria);
-void argazkiakAldatu(kontagailuEnergia);
-/*******Pausa menua*******/
-int pausaMenua();
-//void aukerakAldatu(menuAukerak);
-int aukerakAldatu(menuAukerak);
-/*******Galduz gero*******/
+void bateriaArgazkiaAldatu(kontBateria);
+
+////Jokoaren fase desberdinak////
+int jokoaAurkeztu();
+EGOERA jokatu(void);
 int  jokoAmaierakoa(EGOERA egoera);
-int BUKAERA_irudiaBistaratu();
-int pausaArgazkiakAplikatu(char *argazkia);
+
+////Pausa menua////
+int pausaMenua();
+void aukerakAldatu(menuAukerak);
+=======
+void argazkiakAldatu(kontEnergia);
+void bateriaArgazkiaAplikatu(char *argazkia);
+void bateriaArgazkiaAldatu(kontBateria);
+int aukeratuBidea();
+int zenbakiRandom();
+//void carCrashes(kontCarCrashes);
+int bizitzakAldatu(kontBizitzakGaldu);
+int jokoaAurkeztu();
+EGOERA jokatu(void);
+int  jokoAmaierakoa(EGOERA egoera);
+int JOKOAREN_argazkiakGehitu(char * argazkia);
+>>>>>>> 46ca84d30edb84b2144250fd45089e7f9240e615:02simpleGame/game02/cargame.h
+
 #endif

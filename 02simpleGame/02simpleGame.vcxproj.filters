@@ -19,6 +19,9 @@
     <Filter Include="Header Files\simpleSdlWrapper">
       <UniqueIdentifier>{e313185e-6943-4380-932a-4b6612d3ff10}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\path">
+      <UniqueIdentifier>{fb245572-2b6c-4571-aae9-2cdcba36811b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\simpleSdlWrapper\ebentoak.c">
@@ -36,6 +39,7 @@
     <ClCompile Include="..\simpleSdlWrapper\text.c">
       <Filter>Source Files\simpleSdlWrapper</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -43,6 +47,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="funcargame.c">
+=======
+    <ClCompile Include="menu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+>>>>>>> e086a22165a231086f3b9fe6b341fb8d7b0af93f
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="game02\cargame.c">
@@ -69,6 +79,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="menu.h">
+<<<<<<< HEAD
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="imgpath.h">
@@ -77,6 +88,16 @@
     <ClInclude Include="soundpath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+=======
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="imgpath.h">
+      <Filter>Header Files\path</Filter>
+    </ClInclude>
+    <ClInclude Include="soundpath.h">
+      <Filter>Header Files\path</Filter>
+    </ClInclude>
+>>>>>>> e086a22165a231086f3b9fe6b341fb8d7b0af93f
     <ClInclude Include="game02\cargame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
