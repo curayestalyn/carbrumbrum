@@ -169,3 +169,28 @@ int JOKOAREN_argazkiakGehitu(char * argazkia)
 	jokalariaId = irudiaKargatu(argazkia);
 	return jokalariaId;
 }
+
+int konprobatuPosizioa(JOKO_ELEMENTUA elementua1, JOKO_ELEMENTUA elementua2)
+{
+	int bateraDaude = 0;
+	if (elementua1.pos.x == elementua2.pos.x)
+	{
+		if (elementua1.pos.y + 22 >= elementua2.pos.y - 34 || elementua1.pos.y - 22 <= elementua2.pos.y + 34)
+		{
+			bateraDaude = 1;
+		}
+	}
+	return bateraDaude;
+}
+
+JOKO_ELEMENTUA oztopoakMugitzeko(JOKO_ELEMENTUA oztopoa)
+{
+	int numero = 0, bidea = 0;
+
+	numero = zenbakiRandom();
+	oztopoa.pos.y = -100 - numero;
+	bidea = aukeratuBidea();
+	oztopoa.pos.x = 85 + bidea;
+
+	return oztopoa;
+}

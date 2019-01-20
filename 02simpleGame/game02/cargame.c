@@ -22,7 +22,7 @@ EGOERA jokatu(void)
 {
 	EGOERA  egoera = JOLASTEN;
   
-	int ebentu = 0, bateria = 0, bizitzakAldatu = 0, kontCarCrashes = 0, bidea = 0, numero = 0, denbora = 1, kontagailuMoteldu = 0, bigarrenKontagailua = 0, kontagailuLoop = 0, txanponakScore = 0, salto = 0, saltoMax = 0;
+	int ebentu = 0, bateria = 0, bizitzakAldatu = 0, kontCarCrashes = 0, bidea = 0, numero = 0, denbora = 1, kontagailuMoteldu = 0, bigarrenKontagailua = 0, kontagailuLoop = 0, txanponakScore = 0, salto = 0, saltoMax = 0, bateraDaude = 0;
 	int kontagailuEnergia = 1, kontagailuBateria = 1;
 	int aukera = 2;
 	char txanponakBistaratu[50];
@@ -125,6 +125,7 @@ EGOERA jokatu(void)
 		Sleep(denbora);
 		kontagailuLoop++;
 		pantailaGarbitu();
+		int idAudioGame;
 		/*******************OZTOPOEN AGERPENA DENBORA KONTUAN HARTUTA*******************/
 		oztopoa = argazkiakMugiarazi(oztopoa);
 
@@ -233,7 +234,7 @@ EGOERA jokatu(void)
 		/************Jokalariaren kotxea eta txanponaren arteko kolisioa******/
 		if (jokalaria.pos.x > txanpona.pos.x - 47 && jokalaria.pos.x <txanpona.pos.x + 27 && jokalaria.pos.y + 24 >txanpona.pos.y - 27 && jokalaria.pos.y - 27 < txanpona.pos.y + 24)
 		{
-			int idAudioGame;
+			
 			idAudioGame = loadSound(TXANPON_SOINUA);
 			playSound(idAudioGame);
 
@@ -274,7 +275,6 @@ EGOERA jokatu(void)
 			kontagailuEnergia++;
 			argazkiakAldatu(kontagailuEnergia);
 
-			int idAudioGame;
 			idAudioGame = loadSound(REDBULL_SOINUA);
 			playSound(idAudioGame);
 
@@ -316,7 +316,6 @@ EGOERA jokatu(void)
 			}
 			else if (kontCarCrashes == 1)
 			{
-				int idAudioGame;
 				idAudioGame = loadSound(BIZITZA_SOINUA);
 				playSound(idAudioGame);
 
@@ -365,10 +364,7 @@ EGOERA jokatu(void)
 				bizitzakAldatu = 3;
 				irudiaMugitu(bizitzak3.id, 607, -1100);
 			}
-
-		}
-
-		
+		}		
 		oztopoa = oztopoakAgertzeko(oztopoa);
 		oztopoa2 = oztopoakAgertzeko(oztopoa2);
 		oztopoa3 = oztopoakAgertzeko(oztopoa3);
@@ -405,7 +401,6 @@ EGOERA jokatu(void)
 			pantailaBerriztu();
 		}
 		bigarrenKontagailua++;
-
 		if (saltoMax == 3) { salto = salto + 1; saltoMax = 0; }
 		if (ebentu == TECLA_g && salto >= 1)
 		{
@@ -417,7 +412,190 @@ EGOERA jokatu(void)
 			jokalaria.pos.x = jokalaria.pos.x - 35;
 			salto = salto - 1;
 		}
-
+		/******** Oztopoak ez ezkutatzeko********/
+		if (oztopoa.pos.y < -100 && oztopoa.pos.y > -200)
+		{
+			bateraDaude = konprobatuPosizioa(oztopoa, txanpona);
+			if (bateraDaude == 1)
+			{
+				oztopoa = oztopoakMugitzeko(oztopoa);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa, energybull);
+			if (bateraDaude == 1)
+			{
+				oztopoa = oztopoakMugitzeko(oztopoa);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa, gasolina);
+			if (bateraDaude == 1)
+			{
+				oztopoa = oztopoakMugitzeko(oztopoa);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa, oztopoa2);
+			if (bateraDaude == 1 && kontagailuLoop > 1000)
+			{
+				oztopoa = oztopoakMugitzeko(oztopoa);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa, oztopoa3);
+			if (bateraDaude == 1 && kontagailuLoop > 2000)
+			{
+				oztopoa = oztopoakMugitzeko(oztopoa);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa, oztopoa4);
+			if (bateraDaude == 1 && kontagailuLoop > 3000)
+			{
+				oztopoa = oztopoakMugitzeko(oztopoa);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa, oztopoa5);
+			if (bateraDaude == 1 && kontagailuLoop > 4000)
+			{
+				oztopoa = oztopoakMugitzeko(oztopoa);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa, oztopoa6);
+			if (bateraDaude == 1 && kontagailuLoop > 50000)
+			{
+				oztopoa = oztopoakMugitzeko(oztopoa);
+			}
+		}
+		if (oztopoa2.pos.y < -100 && oztopoa2.pos.y > -200 && kontagailuLoop > 1000)
+		{
+			bateraDaude = konprobatuPosizioa(oztopoa2, txanpona);
+			if (bateraDaude == 1)
+			{
+				oztopoa2 = oztopoakMugitzeko(oztopoa2);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa2, energybull);
+			if (bateraDaude == 1)
+			{
+				oztopoa2 = oztopoakMugitzeko(oztopoa2);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa2, gasolina);
+			if (bateraDaude == 1)
+			{
+				oztopoa2 = oztopoakMugitzeko(oztopoa2);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa2, oztopoa3);
+			if (bateraDaude == 1 && kontagailuLoop > 2000)
+			{
+				oztopoa2 = oztopoakMugitzeko(oztopoa2);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa2, oztopoa4);
+			if (bateraDaude == 1 && kontagailuLoop > 3000)
+			{
+				oztopoa2 = oztopoakMugitzeko(oztopoa2);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa2, oztopoa5);
+			if (bateraDaude == 1 && kontagailuLoop > 4000)
+			{
+				oztopoa2 = oztopoakMugitzeko(oztopoa2);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa2, oztopoa6);
+			if (bateraDaude == 1 && kontagailuLoop > 50000)
+			{
+				oztopoa2 = oztopoakMugitzeko(oztopoa2);
+			}
+		}
+		if (oztopoa3.pos.y < -100 && oztopoa3.pos.y > -200 && kontagailuLoop > 2000)
+		{
+			bateraDaude = konprobatuPosizioa(oztopoa3, txanpona);
+			if (bateraDaude == 1)
+			{
+				oztopoa3 = oztopoakMugitzeko(oztopoa3);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa3, energybull);
+			if (bateraDaude == 1)
+			{
+				oztopoa3 = oztopoakMugitzeko(oztopoa3);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa3, gasolina);
+			if (bateraDaude == 1)
+			{
+				oztopoa3 = oztopoakMugitzeko(oztopoa3);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa3, oztopoa4);
+			if (bateraDaude == 1 && kontagailuLoop > 3000)
+			{
+				oztopoa3 = oztopoakMugitzeko(oztopoa3);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa3, oztopoa5);
+			if (bateraDaude == 1 && kontagailuLoop > 4000)
+			{
+				oztopoa3 = oztopoakMugitzeko(oztopoa3);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa3, oztopoa6);
+			if (bateraDaude == 1 && kontagailuLoop > 50000)
+			{
+				oztopoa3 = oztopoakMugitzeko(oztopoa3);
+			}
+		}
+		if (oztopoa4.pos.y < -100 && oztopoa4.pos.y > -200 && kontagailuLoop > 3000)
+		{
+			bateraDaude = konprobatuPosizioa(oztopoa4, txanpona);
+			if (bateraDaude == 1)
+			{
+				oztopoa4 = oztopoakMugitzeko(oztopoa4);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa4, energybull);
+			if (bateraDaude == 1)
+			{
+				oztopoa4 = oztopoakMugitzeko(oztopoa4);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa4, gasolina);
+			if (bateraDaude == 1)
+			{
+				oztopoa4 = oztopoakMugitzeko(oztopoa4);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa4, oztopoa5);
+			if (bateraDaude == 1 && kontagailuLoop > 4000)
+			{
+				oztopoa4 = oztopoakMugitzeko(oztopoa4);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa4, oztopoa6);
+			if (bateraDaude == 1 && kontagailuLoop > 50000)
+			{
+				oztopoa4 = oztopoakMugitzeko(oztopoa4);
+			}
+		}
+		if (oztopoa5.pos.y < -100 && oztopoa5.pos.y > -200 && kontagailuLoop < 4000)
+		{
+			bateraDaude = konprobatuPosizioa(oztopoa5, txanpona);
+			if (bateraDaude == 1)
+			{
+				oztopoa5 = oztopoakMugitzeko(oztopoa5);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa5, energybull);
+			if (bateraDaude == 1)
+			{
+				oztopoa5 = oztopoakMugitzeko(oztopoa5);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa5, gasolina);
+			if (bateraDaude == 1)
+			{
+				oztopoa5 = oztopoakMugitzeko(oztopoa5);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa5, oztopoa6);
+			if (bateraDaude == 1 && kontagailuLoop > 50000)
+			{
+				oztopoa5 = oztopoakMugitzeko(oztopoa5);
+			}
+		}
+		if (oztopoa6.pos.y < -100 && oztopoa6.pos.y > -200 && kontagailuLoop > 50000)
+		{
+			bateraDaude = konprobatuPosizioa(oztopoa6, txanpona);
+			if (bateraDaude == 1)
+			{
+				oztopoa6 = oztopoakMugitzeko(oztopoa6);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa6, energybull);
+			if (bateraDaude == 1)
+			{
+				oztopoa6 = oztopoakMugitzeko(oztopoa6);
+			}
+			bateraDaude = konprobatuPosizioa(oztopoa6, gasolina);
+			if (bateraDaude == 1)
+			{
+				oztopoa6 = oztopoakMugitzeko(oztopoa6);
+			}
+		}
 		egoera = JOKOA_egoera(jokalaria, bateria, bizitzakAldatu);
 		/******* aukerak 0 itzultzen badu,  hasierako menura joango da. aukerak 1 itzultzen badu, jokoa jarraituko da.*******/
 
