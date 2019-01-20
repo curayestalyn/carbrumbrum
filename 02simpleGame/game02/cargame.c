@@ -24,7 +24,7 @@ EGOERA jokatu(void)
   
 	int ebentu = 0, bateria = 0, bizitzakAldatu = 0, kontCarCrashes = 0, bidea = 0, numero = 0, denbora = 1, kontagailuMoteldu = 0, bigarrenKontagailua = 0, kontagailuLoop = 0, txanponakScore = 0, salto = 0, saltoMax = 0, bateraDaude = 0;
 	int kontagailuEnergia = 1, kontagailuBateria = 1;
-	int aukera = 2;
+	int aukera = 1;
 	char txanponakBistaratu[50];
   
 	JOKO_ELEMENTUA cielo1, cielo2, desierto, oztopoa, oztopoa2, oztopoa3, oztopoa4, oztopoa5, oztopoa6, jokalaria, gasolina, background, marrak1, marrak2, txanpona, energybull, deposito1, deposito2, deposito3, deposito4, bizitzak1, bizitzak2, bizitzak3, bateria1, bateria2, bateria3, bateria4, bateria5;
@@ -608,8 +608,14 @@ EGOERA jokatu(void)
 			loadTheMusic(MENU_SOINUA);
 			playMusic();
 			int pausaArgazkiaId;
+			int lastId;
 			pausaArgazkiaId = pausaArgazkiakAplikatu(PAUSA_JARRAITU);
-			aukera = pausaMenua();
+			lastId = pausaMenua();
+			if (lastId > 1000)
+			{
+				lastId = lastId - 1000;
+				aukera = 0;
+			}
 			if (aukera == 0) 
 			{
 				egoera = 5;
@@ -619,6 +625,10 @@ EGOERA jokatu(void)
 			{
 				egoera = JOLASTEN;
 				irudiaKendu(pausaArgazkiaId);
+				if (lastId >pausaArgazkiaId)
+				{
+					for (int i = lastId - pausaArgazkiaId; i >= 0; i--){irudiaKendu(lastId - i);}
+				}
 				audioInit();
 				loadTheMusic(JOKOA_SOUND);
 				playMusic();

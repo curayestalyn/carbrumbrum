@@ -40,20 +40,25 @@ int pausaArgazkiakAplikatu(char *argazkia)
 int pausaMenua()
 {
 	int ebentu = 0, menuAukerak = 1;
+	int id = 0;
 
 	do
 	{
 		ebentu = ebentuaJasoGertatuBada();
 		if (ebentu == TECLA_DOWN && menuAukerak != 0) {
 			menuAukerak--;
-			aukerakAldatu(menuAukerak);
+			id = aukerakAldatu(menuAukerak);
 		}
 		if (ebentu == TECLA_UP && menuAukerak != 1) {
 			menuAukerak++;
-			aukerakAldatu(menuAukerak);
+			id = aukerakAldatu(menuAukerak);
 		}
 	} while (ebentu != TECLA_RETURN);
-	return menuAukerak;
+	if (menuAukerak==0)
+	{
+		id = id + 1000;
+	}
+	return id;
 }
 
 int BUKAERA_irudiaBistaratu() {
