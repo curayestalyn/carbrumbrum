@@ -3,9 +3,9 @@
   imagen.c
   soinua.c
   text.c
-  cargame.c
   funcargame.c
   funmenu.c
+  cargame.c
   main.c
   menu.c
   Generating Code...

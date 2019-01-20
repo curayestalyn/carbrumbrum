@@ -11,18 +11,30 @@
 #include <stdlib.h>
 #include "OurTypes.h"
 
-void aukerakAldatu(menuAukerak)
+int aukerakAldatu(menuAukerak)
 {
+	int id;
 	if (menuAukerak >= 1) { menuAukerak = 1; }
 	if (menuAukerak < 1) { menuAukerak = 0; }
 	if (menuAukerak == 0) 
 	{
-		sarreraArgazkiaAplikatu(PAUSA_ATERA);
+		id = pausaArgazkiakAplikatu(PAUSA_ATERA);
 	}
 	if (menuAukerak == 1) 
 	{
-		sarreraArgazkiaAplikatu(PAUSA_JARRAITU);
+		id = pausaArgazkiakAplikatu(PAUSA_JARRAITU);
 	}
+	return id;
+}
+
+int pausaArgazkiakAplikatu(char *argazkia)
+{
+	int id = 1;
+	id = irudiaKargatu(argazkia);
+	irudiaMugitu(id, 0, 0);
+	irudiakMarraztu();
+	pantailaBerriztu();
+	return id;
 }
 
 int pausaMenua()

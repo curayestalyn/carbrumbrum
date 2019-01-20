@@ -27,7 +27,7 @@ EGOERA jokatu(void)
 	int aukera = 2;
 	char txanponakBistaratu[50];
   
-	JOKO_ELEMENTUA cielo1, cielo2, desierto, oztopoa, oztopoa2, oztopoa3, oztopoa4, oztopoa5, oztopoa6, jokalaria, gasolina, background, marrak1, marrak2, txanpona, energybull, deposito1, deposito2, deposito3, deposito4, bizitzak1, bizitzak2, bizitzak3, bateria1, bateria2, bateria3, bateria4, bateria5;
+	JOKO_ELEMENTUA cielo1, cielo2, desierto, oztopoa, oztopoa2, oztopoa3, oztopoa4, oztopoa5, oztopoa6, jokalaria, gasolina, background, marrak1, marrak2, txanpona, energybull, deposito1, deposito2, deposito3, deposito4, bizitzak1, bizitzak2, bizitzak3, bateria1, bateria2, bateria3, bateria4, bateria5,pausa;
 	POSIZIOA aux;
 	/*******Eszena*******/
 	background.pos.x = 0;
@@ -42,6 +42,8 @@ EGOERA jokatu(void)
 	cielo2.pos.y = -960;
 	desierto.pos.x = 0;
 	desierto.pos.y = -480;
+	pausa.pos.x = 0;
+	pausa.pos.y = 0;
 	/*******Jokalaria*******/
 	jokalaria.pos.x = 340;
 	jokalaria.pos.y = 340;
@@ -440,7 +442,9 @@ EGOERA jokatu(void)
 
 	if (ebentu == TECLA_ESCAPE)
 	{
-		sarreraArgazkiaAplikatu(PAUSA_JARRAITU);
+		int id;
+		id=pausaArgazkiakAplikatu(PAUSA_JARRAITU);
+
 		aukera = pausaMenua();
 
 		if (aukera == 0) //Menura itzultzeko
@@ -450,7 +454,8 @@ EGOERA jokatu(void)
 		}
 		else if (aukera == 1) //Jokoa jarraitzeko
 		{
-			egoera = JOLASTEN;
+			egoera = 0;
+			irudiaKendu(id);
 		}
 	}
 		
@@ -514,13 +519,3 @@ int  jokoAmaierakoa(EGOERA egoera)
 	irudiaKendu(id);
 	return balioa;
 }
-
-
-
-
-
-
-
-
-
-

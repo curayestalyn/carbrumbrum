@@ -48,7 +48,7 @@
     <ClCompile Include="funcargame.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cargame.c">
+    <ClCompile Include="game02\cargame.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,7 +80,7 @@
     <ClInclude Include="soundpath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cargame.h">
+    <ClInclude Include="game02\cargame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
